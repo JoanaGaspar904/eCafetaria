@@ -27,8 +27,8 @@ public class DishTypeRestController {
     CreateOrUpdateDishTypeController createOrUpdateDishTypeController;
 
     @PutMapping("/{Acronym}")
-    public DishTypeDTO CreateOrUpdateDishType (@PathVariable("Acronym") String acronym, CreateOrUpdateDishTypeDTO dto){
-        DishTypeDTO dishTypeDTO = CreateOrUpdateDishTypeController.update(acronym,dto);
+    public DishTypeDTO CreateOrUpdateDishType (@PathVariable(acronym = "Acronym") String acronym, @RequestBody CreateOrUpdateDishTypeDTO dto){
+        DishTypeDTO dishTypeDTO = CreateOrUpdateDishTypeController.createOrUpdateDishType(acronym,dto);
         return dishTypeDTO;
     }
 
