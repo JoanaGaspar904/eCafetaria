@@ -17,9 +17,9 @@ public class DishTypeRestController {
     @Autowired
     FindDishTypeController findDishTypeController;
 
-    public List<CreateOrUpdateDishTypeDTO> searchAllDishType() {
-        List<CreateOrUpdateDishTypeDTO> dishTypeDTOList = new ArrayList<>();
-        dishTypeDTOList = findDishTypeController.findAllDishType();
+    public List<DishTypeDTO> searchAllDishType() {
+        List<DishTypeDTO> dishTypeDTOList = new ArrayList<>();
+        dishTypeDTOList = findDishTypeController.findAll();
         return dishTypeDTOList;
     }
 

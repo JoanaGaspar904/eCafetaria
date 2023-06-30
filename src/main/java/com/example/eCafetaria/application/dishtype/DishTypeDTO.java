@@ -4,5 +4,10 @@ import com.example.eCafetaria.domain.DishTypeDesignation;
 
 public class DishTypeDTO {
     String acronym;
-    DishTypeDesignation designation;
+    String designation;
+
+    public DishTypeDTO(String acronym, String designation) {
+        this.acronym = acronym;
+        this.designation = designation;
+    }
 }

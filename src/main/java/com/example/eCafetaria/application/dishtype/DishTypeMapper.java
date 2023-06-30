@@ -6,13 +6,17 @@ import java.util.List;
 
 public class DishTypeMapper {
 
-    public List<CreateOrUpdateDishTypeDTO> dishTypeDTOList(List<DishType> dishTypeList) {
-        List<CreateOrUpdateDishTypeDTO> dishTypeDTOList = new ArrayList<>();
+    public List<DishTypeDTO> dishTypeListToDTOList(List<DishType> dishTypeList) {
+        List<DishTypeDTO> dishTypeDTOList = new ArrayList<>();
         if (!dishTypeList.isEmpty()) {
-            for (DishType dishType : dishTypeDTOList) {
-                dishTypeDTOList.add(dishTypeToDTO(dishType));
+            for (DishType dishType : dishTypeList) {
+                dishTypeDTOList.add(dishTypeDTO(dishType));
             }
         }
         return dishTypeDTOList;
+    }
+
+    private DishTypeDTO dishTypeDTO(DishType dishType) {
+        return new DishTypeDTO(dishType.getAcronym(), dishType.getDesignation().getDesignation());
     }
 }
