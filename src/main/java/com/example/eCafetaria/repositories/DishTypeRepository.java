@@ -8,6 +8,6 @@ import java.util.List;
 @Repository
 public interface DishTypeRepository {
     DishType save (DishType dishtype);
-    List<DishType> findAllDishType();
+    List<DishType> findAll();
 }
  

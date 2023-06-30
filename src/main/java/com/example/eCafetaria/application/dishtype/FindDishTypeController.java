@@ -12,6 +12,6 @@ public class FindDishTypeController {
     DishTypeMapper dishTypeMapper;
 
     public List<DishTypeDTO> findAll() {
-        return dishTypeMapper.dishTypeListToDTOList(dishTypeRepository.findAll());
+        return dishTypeMapper.dishTypeDTOList(dishTypeRepository.findAll());
     }
 }

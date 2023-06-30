@@ -5,16 +5,10 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Component
 public class DishTypeMapper {
 
-    public List<DishTypeDTO> dishTypeListToDTOList(List<DishType> dishTypeList) {
-        List<DishTypeDTO> dishTypeDTOList = new ArrayList<>();
-
-    public DishType toDishType (String acronym, CreateOrUpdateDishTypeDTO dto){
+    public DishType toDishType(String acronym, CreateOrUpdateDishTypeDTO dto){
         return new DishType(acronym, dto.designation);
     }
 
