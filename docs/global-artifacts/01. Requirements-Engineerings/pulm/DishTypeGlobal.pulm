@@ -1,0 +1,11 @@
+@startuml
+
+DishType --> DishTypeDesignation
+class DishType {
+private Acronym
+}
+class DishTypeDesignation {
+private String designation
+}
+
+@enduml

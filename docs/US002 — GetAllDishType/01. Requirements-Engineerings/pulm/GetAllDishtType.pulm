@@ -1,0 +1,8 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Employee --> GetAllDishType: Give me a list of Dish Types
+GetAllDishType --> Employee: Display list
+@enduml
