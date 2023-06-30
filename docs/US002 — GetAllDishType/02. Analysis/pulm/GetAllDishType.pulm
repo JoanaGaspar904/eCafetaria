@@ -1,0 +1,16 @@
+@startuml
+class DishType{
+    Acronym
+}
+
+class administrator {
+}
+
+class  DishTypeDesignation {
+    Designation
+}
+
+DishType "1" -- "1" DishTypeDesignation : > must have
+administrator "1" - "*" DishType : create a >
+
+@enduml

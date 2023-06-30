@@ -3,6 +3,6 @@
 
 autonumber
 
-Employee --> GetAllDishType: Give me a list of Dish Types
-GetAllDishType --> Employee: Display list
+Employee --> System: Give me a list of Dish Types
+System --> Employee: Display list
 @enduml
