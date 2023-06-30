@@ -1,0 +1,33 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Alternative One
+
+autonumber
+
+actor "Organization Employee" as Employee
+participant ":System" as System
+
+activate Employee
+
+    Employee -> System : Asks to create Dish Type
+    activate System
+
+        System --> Employee : requests data
+    deactivate System
+
+    Employee -> System : types requested data (DishType)
+    activate System
+
+        System --> Employee : create a DishType
+    deactivate System
+
+    Employee -> System : submits data
+    activate System
+
+        System --> Employee : displays operation success
+    deactivate System
+
+@enduml
