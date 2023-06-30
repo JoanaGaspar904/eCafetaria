@@ -1,0 +1,17 @@
+	___________
+	Analysis
+	____________
+
+    * Type Dish conditions:
+        - Is characterized by an acronym and a description
+        - Is identified by an acronym and must be unique
+        - Exists already this dish types: meat, fish, vegetarian
+______________________
+
+UNITARY TESTS
+_____________________
+
+* The type of dish must have an acronym
+* The acronym of the type of dish cannot be empty or space(s)
+* The type of dish must have a description
+* Dish type description cannot be empty or space(s)

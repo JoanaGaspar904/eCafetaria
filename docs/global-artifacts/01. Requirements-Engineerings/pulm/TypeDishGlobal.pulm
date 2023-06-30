@@ -1,0 +1,11 @@
+@startuml
+
+TypeDish --> TypeDishDescription
+class TypeDish {
+private Acronym
+}
+class TypeDishDescription {
+private String description
+}
+
+@enduml
