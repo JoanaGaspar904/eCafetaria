@@ -1,7 +1,7 @@
 package com.example.eCafetaria.application.dishtype;
 
-import com.example.eCafetaria.domain.DishTypeDesignation;
+import com.example.eCafetaria.domain.dishtype.Designation;
 
 public class CreateOrUpdateDishTypeDTO {
-    DishTypeDesignation designation;
+    Designation designation;
 }

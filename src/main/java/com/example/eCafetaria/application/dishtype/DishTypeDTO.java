@@ -1,6 +1,6 @@
 package com.example.eCafetaria.application.dishtype;
 
-import com.example.eCafetaria.domain.DishTypeDesignation;
+import com.example.eCafetaria.domain.dishtype.Designation;
 import lombok.Data;
 
 @Data

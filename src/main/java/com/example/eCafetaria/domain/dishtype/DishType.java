@@ -19,8 +19,9 @@ public class DishType {
         setAcronym(acronym);
         this.designation=designation;
     }
-
-
-
-
+    public void setAcronym(String acronym) {
+        if(acronym.length() > 3 || acronym.length() < 1)
+            throw new StringIndexOutOfBoundsException();
+        this.acronym = acronym;
+    }
 }
