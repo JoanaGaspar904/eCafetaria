@@ -1,5 +1,5 @@
 package com.example.eCafetaria.domain.dishtype;
-import com.example.eCafetaria.domain.DishTypeDesignation;
+
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -11,15 +11,15 @@ public class DishType {
 
     @Id
     private String acronym;
-    private DishTypeDesignation designation;
+    private Designation designation;
 
 
     protected DishType(){}
-    private DishType(String acronym, DishTypeDesignation designation){
-        setAcronym(acronym);
+    public DishType(String acronym, Designation designation){
+        updateAcronym(acronym);
         this.designation=designation;
     }
-    public void setAcronym(String acronym) {
+    private void updateAcronym(String acronym) {
         if(acronym.length() > 3 || acronym.length() < 1)
             throw new StringIndexOutOfBoundsException();
         this.acronym = acronym;

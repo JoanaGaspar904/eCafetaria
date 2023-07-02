@@ -4,10 +4,14 @@ import com.example.eCafetaria.application.dishtype.CreateOrUpdateDishTypeControl
 import com.example.eCafetaria.application.dishtype.CreateOrUpdateDishTypeDTO;
 import com.example.eCafetaria.application.dishtype.DishTypeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import com.example.eCafetaria.application.dishtype.FindDishTypeController;
+import org.springframework.web.server.ResponseStatusException;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/dishtype")
@@ -21,12 +25,19 @@ public class DishTypeRestController {
         return dishTypeDTOList;
     }
 
+    @GetMapping("/{acronym}")
+    public DishTypeDTO searchByAcronym(@PathVariable("acronym") String acronym){
+        Optional<DishTypeDTO> dishTypeChecker = findDishTypeController.findByAcronym(acronym);
+        if(dishTypeChecker.isPresent())
+            return dishTypeChecker.get();
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    }
+
     @Autowired
     CreateOrUpdateDishTypeController createOrUpdateDishTypeController;
-
     @PutMapping("/{Acronym}")
-    public DishTypeDTO CreateOrUpdateDishType (@PathVariable(acronym = "Acronym") String acronym, @RequestBody CreateOrUpdateDishTypeDTO dto){
-        DishTypeDTO dishTypeDTO = CreateOrUpdateDishTypeController.createOrUpdateDishType(acronym,dto);
+    public DishTypeDTO CreateOrUpdateDishType (@PathVariable("Acronym") String acronym, @RequestBody CreateOrUpdateDishTypeDTO dto){
+        DishTypeDTO dishTypeDTO = createOrUpdateDishTypeController.createOrUpdateDishType(acronym,dto);
         return dishTypeDTO;
     }
 
