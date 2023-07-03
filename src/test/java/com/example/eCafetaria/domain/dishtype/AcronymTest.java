@@ -5,8 +5,6 @@ import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class AcronymTest {
 
     @BeforeEach
@@ -21,4 +19,5 @@ class AcronymTest {
     void AcronymTest_CreateAcronym_SingleWord() throws NotASingleWord {
         Acronym acronym = new Acronym("C R");
     }
+    void AcronymTest_UpdateAcronym_NoSpecialChars()
 }
