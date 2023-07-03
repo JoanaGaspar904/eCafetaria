@@ -1,5 +1,7 @@
 package com.example.eCafetaria.application.dishtype;
 
+import com.example.eCafetaria.domain.dishtype.Acronym;
+import com.example.eCafetaria.domain.dishtype.Designation;
 import com.example.eCafetaria.domain.dishtype.DishType;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import java.util.List;
 public class DishTypeMapper {
 
     public DishType toDishType(String acronym, CreateOrUpdateDishTypeDTO dto){
-        return new DishType(acronym, dto.designation);
+        return new DishType(new Acronym(acronym), new Designation(dto.designation));
     }
 
     public List<DishTypeDTO> dishTypeDTOList (List<DishType> dishTypeList){
@@ -23,10 +25,10 @@ public class DishTypeMapper {
     }
 
     public DishType update(DishType dishType, CreateOrUpdateDishTypeDTO dto){
-        dishType.setDesignation(dto.designation);
+        dishType.updateDesignation(new Designation(dto.designation));
         return dishType;
     }
     public DishTypeDTO toDTO(DishType dishType) {
-        return new DishTypeDTO(dishType.getAcronym(), dishType.getDesignation().getDesignation());
+        return new DishTypeDTO(dishType.getAcronym(), dishType.getDesignation());
     }
 }

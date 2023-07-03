@@ -1,5 +1,6 @@
 package com.example.eCafetaria.application.dishtype;
 
+import com.example.eCafetaria.domain.dishtype.Acronym;
 import com.example.eCafetaria.domain.dishtype.DishType;
 import com.example.eCafetaria.repositories.DishTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
