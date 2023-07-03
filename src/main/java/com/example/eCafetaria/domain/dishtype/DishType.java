@@ -1,12 +1,9 @@
 package com.example.eCafetaria.domain.dishtype;
 
-import lombok.Data;
-
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Data
 @Entity
 public class DishType {
 
