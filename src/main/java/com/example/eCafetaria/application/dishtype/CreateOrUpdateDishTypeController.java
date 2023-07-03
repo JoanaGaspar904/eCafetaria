@@ -20,7 +20,8 @@ public class CreateOrUpdateDishTypeController {
         Optional<DishType> optionalDishType = repo.findById(acronym);
         DishType dishType;
         if(optionalDishType.isPresent()){
-            dishType = mapper.update(optionalDishType.get(),dto);
+            optionalDishType.get().update(dto);
+            dishType = mapper.toDishType(acronym, dto);
         } else{
             dishType = mapper.toDishType(acronym, dto);
         }

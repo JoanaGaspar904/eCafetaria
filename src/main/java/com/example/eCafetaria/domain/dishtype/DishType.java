@@ -1,6 +1,7 @@
 package com.example.eCafetaria.domain.dishtype;
 
-
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import javax.persistence.*;
 
 @Entity
