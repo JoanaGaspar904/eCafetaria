@@ -1,15 +1,11 @@
 package com.example.eCafetaria.domain.dishtype;
 
-import com.example.eCafetaria.application.dishtype.CreateOrUpdateDishTypeDTO;
-
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.*;
 
 @Entity
 public class DishType {
-
 
     @EmbeddedId
     private Acronym acronym;

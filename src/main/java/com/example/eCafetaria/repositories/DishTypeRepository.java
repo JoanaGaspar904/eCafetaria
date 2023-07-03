@@ -12,5 +12,7 @@ public interface DishTypeRepository {
     DishType save (DishType dishtype);
     List<DishType> findAll();
     Optional<DishType> findById(String acronym);
+
+
 }
  

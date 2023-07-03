@@ -19,6 +19,7 @@ public class DishTypeRestController {
     @Autowired
     FindDishTypeController findDishTypeController;
 
+    @GetMapping
     public List<DishTypeDTO> searchAllDishType() {
         List<DishTypeDTO> dishTypeDTOList = new ArrayList<>();
         dishTypeDTOList = findDishTypeController.findAll();

@@ -1,6 +1,7 @@
 package com.example.eCafetaria.domain.dishtype;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 @Embeddable
@@ -18,7 +19,7 @@ public class Acronym implements Serializable {
         this.acronym = acronym;
     }
 
-    public String obtainAcronym() {
+    public String getAcronym() {
         return acronym;
     }
 }
