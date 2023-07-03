@@ -22,7 +22,7 @@ public class Acronym implements Serializable {
         this.acronym = acronym;
     }
 
-    public String obtainAcronym() {
+    public String getAcronym() {
         return acronym;
     }
 }

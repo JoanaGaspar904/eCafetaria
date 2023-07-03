@@ -29,4 +29,8 @@ public class Designation{
     public String obtainDesignation() {
         return designation;
     }
+
+    public String getDesignation() {
+        return designation;
+    }
 }
