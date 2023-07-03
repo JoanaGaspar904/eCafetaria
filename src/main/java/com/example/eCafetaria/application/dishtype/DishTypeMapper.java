@@ -29,6 +29,6 @@ public class DishTypeMapper {
         return dishType;
     }
     public DishTypeDTO toDTO(DishType dishType) {
-        return new DishTypeDTO(dishType.getAcronym(), dishType.getDesignation());
+        return new DishTypeDTO(dishType.getAcronym().obtainAcronym(), dishType.getDesignation().obtainDesignation());
     }
 }

@@ -1,7 +1,15 @@
 package com.example.eCafetaria.domain.dishtype;
 
-public class Acronym {
+import javax.persistence.Embeddable;
+import java.io.Serializable;
+
+@Embeddable
+public class Acronym implements Serializable {
+    private static final long serialVersionUID = -2657775862866472360L;
     private String acronym;
+
+    protected Acronym() {
+    }
 
     public Acronym(String acronym) {
         updateAcronym(acronym);
@@ -11,5 +19,9 @@ public class Acronym {
         if(acronym.length() > 3 || acronym.length() < 1)
             throw new StringIndexOutOfBoundsException();
         this.acronym = acronym;
+    }
+
+    public String obtainAcronym() {
+        return acronym;
     }
 }

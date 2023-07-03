@@ -1,13 +1,12 @@
 package com.example.eCafetaria.domain.dishtype;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class DishType {
 
-    @Id
+
+    @EmbeddedId
     private Acronym acronym;
     @Embedded
     private Designation designation;
