@@ -2,8 +2,12 @@ package com.example.eCafetaria.application.dishtype;
 
 import com.example.eCafetaria.domain.dishtype.Designation;
 import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 
 @Data
+@AllArgsConstructor
 public class CreateOrUpdateDishTypeDTO {
-    Designation designation;
+    String designation;
 }

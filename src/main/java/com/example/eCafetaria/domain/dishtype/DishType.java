@@ -5,33 +5,29 @@ import com.example.eCafetaria.application.dishtype.CreateOrUpdateDishTypeDTO;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class DishType {
 
-    @Id
-    private String acronym;
+
+    @EmbeddedId
+    private Acronym acronym;
     @Embedded
     private Designation designation;
 
 
     protected DishType(){}
-    public DishType(String acronym, Designation designation){
-        updateAcronym(acronym);
+    public DishType(Acronym acronym, Designation designation){
+        this.acronym=acronym;
+        updateDesignation(designation);
+    }
+
+    public void updateDesignation(Designation designation) {
         this.designation=designation;
     }
-    private void updateAcronym(String acronym) {
-        if(acronym.length() > 3 || acronym.length() < 1)
-            throw new StringIndexOutOfBoundsException();
-        this.acronym = acronym;
-    }
 
-    public DishType update(CreateOrUpdateDishTypeDTO dto){
-      DishType dishType = new DishType(acronym, dto.getDesignation());
-        return dishType;
-    }
-
-    public String getAcronym() {
+    public Acronym getAcronym() {
         return acronym;
     }
 
