@@ -2,6 +2,7 @@ package com.example.eCafetaria.domain.dishtype;
 
 import lombok.Data;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -11,6 +12,7 @@ public class DishType {
 
     @Id
     private String acronym;
+    @Embedded
     private Designation designation;
 
 
