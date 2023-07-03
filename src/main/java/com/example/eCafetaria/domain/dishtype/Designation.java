@@ -33,5 +33,3 @@ public class Designation {
         return designation;
     }
 }
-
-
