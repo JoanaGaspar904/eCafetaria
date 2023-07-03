@@ -10,7 +10,6 @@ import javax.persistence.*;
 public class DishType {
 
     @EmbeddedId
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Acronym acronym;
     @Embedded
     private Description description;
@@ -25,18 +24,15 @@ public class DishType {
     }
 
     private void setAcronym(Acronym acronym) {
-        new Acronym(acronym.getAcronym());
+        this.acronym = new Acronym(acronym.getAcronym());
+
     }
 
     public void setDesignation(Description description) {
-        try {
             if (description.getDesignation().length() < 1 || description.getDesignation().length() > 2048) {
-                throw new InvalidLenghtForDesignation("Error: Description has to be between 1 and 2048 characters!");
+            //   throw new InvalidLenghtForDesignation("Error: Description has to be between 1 and 2048 characters!");
             }
-            new Description(description.getDesignation());
-        } catch (InvalidLenghtForDesignation e) {
-            System.out.println(e.getMessage());
-        }
+           this.description = new Description(description.getDesignation());
     }
 
     public Acronym getAcronym() {
