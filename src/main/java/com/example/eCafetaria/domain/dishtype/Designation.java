@@ -5,9 +5,12 @@ import lombok.Data;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Designation {
+public class Designation{
     String designation;
 
+
+    public Designation() {
+    }
 
     protected Designation(String designation) throws InvalidLenghtForDesignation {
         updateDesignation(designation);
