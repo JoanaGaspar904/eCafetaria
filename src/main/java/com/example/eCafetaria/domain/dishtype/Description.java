@@ -3,15 +3,15 @@ package com.example.eCafetaria.domain.dishtype;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Designation {
+public class Description {
     private final String designation;
 
 
-    protected Designation() {
+    protected Description() {
         this.designation = null;
     }
 
-    public Designation(String designation) {
+    public Description(String designation) {
         this.designation = designation;
     }
 

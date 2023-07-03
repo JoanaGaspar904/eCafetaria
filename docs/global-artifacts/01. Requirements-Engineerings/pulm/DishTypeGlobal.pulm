@@ -5,7 +5,7 @@ class DishType {
 private Acronym
 }
 class DishTypeDesignation {
-private String designation
+private String description
 }
 
 @enduml
