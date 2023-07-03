@@ -1,5 +1,7 @@
 package com.example.eCafetaria.domain.dishtype;
 
+import com.example.eCafetaria.application.dishtype.CreateOrUpdateDishTypeDTO;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -22,5 +24,18 @@ public class DishType {
         if(acronym.length() > 3 || acronym.length() < 1)
             throw new StringIndexOutOfBoundsException();
         this.acronym = acronym;
+    }
+
+    public DishType update(CreateOrUpdateDishTypeDTO dto){
+      DishType dishType = new DishType(acronym, dto.getDesignation());
+        return dishType;
+    }
+
+    public String getAcronym() {
+        return acronym;
+    }
+
+    public Designation getDesignation() {
+        return designation;
     }
 }

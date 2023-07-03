@@ -22,10 +22,7 @@ public class DishTypeMapper {
         return dishTypeDTOList;
     }
 
-    public DishType update(DishType dishType, CreateOrUpdateDishTypeDTO dto){
-        dishType.setDesignation(dto.designation);
-        return dishType;
-    }
+
     public DishTypeDTO toDTO(DishType dishType) {
         return new DishTypeDTO(dishType.getAcronym(), dishType.getDesignation().getDesignation());
     }
