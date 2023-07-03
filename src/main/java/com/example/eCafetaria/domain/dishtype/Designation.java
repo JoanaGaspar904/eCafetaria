@@ -2,27 +2,30 @@ package com.example.eCafetaria.domain.dishtype;
 
 import com.example.eCafetaria.domain.dishtype.exceptions.InvalidLenghtForDesignation;
 import lombok.Data;
+
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Designation{
+public class Designation {
     String designation;
 
 
     public Designation() {
     }
 
-    protected Designation(String designation) throws InvalidLenghtForDesignation {
+    public Designation(String designation) {
         updateDesignation(designation);
     }
 
-    public void updateDesignation(String designation) throws InvalidLenghtForDesignation {
-        if (designation.length() > 1) {
-            throw new InvalidLenghtForDesignation("ERROR:Lenght of Dish Type is too small!");
-        } else if (designation.length() < 2048) {
-            throw new InvalidLenghtForDesignation("ERROR:Lenght of Dish Type is too big!");
-        } else {
-            this.designation = designation;
+    private void updateDesignation(String designation){
+        try {
+            if (designation.length() < 1 || designation.length() > 2048) {
+                throw new InvalidLenghtForDesignation("Error: Designation has to be between 1 and 2048 characters!");
+            }
+                this.designation = designation;
+
+        } catch (InvalidLenghtForDesignation e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -30,3 +33,5 @@ public class Designation{
         return designation;
     }
 }
+
+
