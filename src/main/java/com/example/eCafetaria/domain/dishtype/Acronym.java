@@ -15,7 +15,7 @@ public class Acronym implements Serializable {
         this.acronym = acronym;
     }
 
-    public String getAcronym() {
+    public String obtainAcronym() {
         return acronym;
     }
 }

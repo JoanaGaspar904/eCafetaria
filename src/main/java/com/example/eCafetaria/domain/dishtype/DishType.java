@@ -24,7 +24,7 @@ public class DishType {
     }
 
     private void setAcronym(Acronym acronym) {
-        new Acronym(acronym.getAcronym());
+        new Acronym(acronym.obtainAcronym());
     }
 
     private void setDesignation(Designation designation) {
