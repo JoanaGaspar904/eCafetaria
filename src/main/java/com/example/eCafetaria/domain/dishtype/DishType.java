@@ -29,11 +29,12 @@ public class DishType {
     }
 
     public void setDesignation(Description description) {
-            if (description.getDesignation().length() < 1 || description.getDesignation().length() > 2048) {
+        if (description.getDesignation().length() < 1 || description.getDesignation().length() > 2048) {
             //   throw new InvalidLenghtForDesignation("Error: Description has to be between 1 and 2048 characters!");
-            }
-           this.description = new Description(description.getDesignation());
+        }
+        this.description = new Description(description.getDesignation());
     }
+
 
     public Acronym getAcronym() {
         return acronym;
