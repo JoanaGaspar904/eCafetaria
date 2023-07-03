@@ -15,14 +15,27 @@ public class DishType {
     private Designation designation;
 
 
-    protected DishType(){}
-    public DishType(Acronym acronym, Designation designation){
-        this.acronym=acronym;
-        updateDesignation(designation);
+    protected DishType() {
     }
 
-    public void updateDesignation(Designation designation) {
-        this.designation=designation;
+    public DishType(Acronym acronym, Designation designation) {
+        setAcronym(acronym);
+        setDesignation(designation);
+    }
+
+    private void setAcronym(Acronym acronym) {
+        new Acronym(acronym.getAcronym());
+    }
+
+    private void setDesignation(Designation designation) {
+        try {
+            if (designation.getDesignation().length() < 1 || designation.getDesignation().length() > 2048) {
+                throw new InvalidLenghtForDesignation("Error: Designation has to be between 1 and 2048 characters!");
+            }
+            new Designation(designation.getDesignation());
+        } catch (InvalidLenghtForDesignation e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public Acronym getAcronym() {
@@ -31,23 +44,5 @@ public class DishType {
 
     public Designation getDesignation() {
         return designation;
-    }
-
-    private void setAcronym(Acronym acronym) {
-        this.acronym = acronym;
-    }
-
-    private void setDesignation(Designation designation) {
-        this.designation = designation;
-    }
-
-    public void updateDesignation(String designation) throws InvalidLenghtForDesignation {
-        if (designation.length() > 1) {
-            throw new InvalidLenghtForDesignation("ERROR:Lenght of Dish Type is too small!");
-        } else if (designation.length() < 2048) {
-            throw new InvalidLenghtForDesignation("ERROR:Lenght of Dish Type is too big!");
-        } else {
-            this.designation = designation;
-        }
     }
 }

@@ -19,5 +19,5 @@ class AcronymTest {
     void AcronymTest_CreateAcronym_SingleWord() throws NotASingleWord {
         Acronym acronym = new Acronym("C R");
     }
-    void AcronymTest_UpdateAcronym_NoSpecialChars()
+    //void AcronymTest_UpdateAcronym_NoSpecialChars();
 }

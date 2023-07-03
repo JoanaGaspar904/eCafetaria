@@ -25,11 +25,10 @@ public class DishTypeMapper {
         return dishTypeDTOList;
     }
 
-    public DishType update(DishType dishType, CreateOrUpdateDishTypeDTO dto) throws InvalidLenghtForDesignation {
-        dishType.updateDesignation(new Designation(dto.getDesignation()));
-        return dishType;
+    public DishType update(DishType dishType, CreateOrUpdateDishTypeDTO dto) {
+        return new DishType(dishType.getAcronym(), new Designation(dto.designation));
     }
     public DishTypeDTO toDTO(DishType dishType) {
-        return new DishTypeDTO(dishType.getAcronym().obtainAcronym(), dishType.getDesignation().obtainDesignation());
+        return new DishTypeDTO(dishType.getAcronym().getAcronym(), dishType.getDesignation().getDesignation());
     }
 }
