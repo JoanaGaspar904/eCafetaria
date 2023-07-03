@@ -10,6 +10,7 @@ import javax.persistence.*;
 public class DishType {
 
     @EmbeddedId
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Acronym acronym;
     @Embedded
     private Description description;
