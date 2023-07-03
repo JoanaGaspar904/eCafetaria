@@ -1,6 +1,7 @@
 package com.example.eCafetaria.domain.dishtype;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 @Embeddable

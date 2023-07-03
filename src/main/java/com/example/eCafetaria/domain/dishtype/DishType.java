@@ -1,10 +1,10 @@
 package com.example.eCafetaria.domain.dishtype;
 
+
 import javax.persistence.*;
 
 @Entity
 public class DishType {
-
 
     @EmbeddedId
     private Acronym acronym;
