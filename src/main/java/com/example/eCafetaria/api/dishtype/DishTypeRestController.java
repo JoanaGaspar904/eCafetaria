@@ -2,10 +2,9 @@ package com.example.eCafetaria.api.dishtype;
 
 import com.example.eCafetaria.application.dishtype.*;
 import com.example.eCafetaria.domain.dishtype.Acronym;
-import com.example.eCafetaria.domain.dishtype.exceptions.InvalidLenghtForDescription;
+import com.example.eCafetaria.domain.dishtype.exceptions.InvalidLengthForDescription;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -40,7 +39,7 @@ public class DishTypeRestController {
         try {
             DishTypeDTO dishTypeDTO = createOrUpdateDishTypeController.createOrUpdateDishType(acronym, dto);
             return dishTypeDTO;
-        }catch (InvalidLenghtForDescription e){
+        }catch (InvalidLengthForDescription e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }

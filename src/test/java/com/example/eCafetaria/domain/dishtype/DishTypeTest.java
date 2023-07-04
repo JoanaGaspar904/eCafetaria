@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class DishTypeTest {
 
     @Test
-    void Test_setAcronym_Not_A_Single_Word() throws NotASingleWord{
+    void Test_setAcronym_Not_A_Single_Word() {
         String acronymToTest = "C R";
         String descriptionToTest = "carne";
         Assertions.assertThrows(NotASingleWord.class, () -> {
@@ -17,7 +17,7 @@ class DishTypeTest {
     }
 
     @Test
-    void Test_setAcronym_No_Special_Characters() throws NoSpecialCharacters{
+    void Test_setAcronym_No_Special_Characters() {
         String acronymToTest = "C!R";
         String descriptionToTest = "carne";
         Assertions.assertThrows(NoSpecialCharacters.class, () -> {
@@ -26,7 +26,7 @@ class DishTypeTest {
     }
 
     @Test
-    void Test_setAcronym_Max_10_Characters() throws StringIndexOutOfBoundsException{
+    void Test_setAcronym_Max_10_Characters() {
         String acronymToTest = "CARCARCARCAR";
         String descriptionToTest = "carne";
         Assertions.assertThrows(StringIndexOutOfBoundsException.class, () -> {
