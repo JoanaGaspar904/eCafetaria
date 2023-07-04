@@ -35,7 +35,7 @@ public class DishType {
      */
     public void setDescription(Description description) {
         if (description.getDesignation().length() < 1 || description.getDesignation().length() > 2048) {
-            throw new InvalidLenghtForDescription("Error: Description has to be between 1 and 2048 characters!");
+            throw new InvalidLenghtForDescription();
         }
         this.description = new Description(description.getDesignation());
     }
