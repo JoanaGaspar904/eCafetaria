@@ -1,5 +1,6 @@
 package com.example.eCafetaria.domain.dishtype;
 
+import com.example.eCafetaria.domain.dishtype.exceptions.InvalidLenghtForDescription;
 import com.example.eCafetaria.domain.dishtype.exceptions.NoSpecialCharacters;
 import com.example.eCafetaria.domain.dishtype.exceptions.NotASingleWord;
 
@@ -28,7 +29,7 @@ public class DishType {
      * Except when we receive the acronym by user
      */
 
-    private void setAcronym(Acronym acronym) throws NotASingleWord, NoSpecialCharacters {
+    private void setAcronym(Acronym acronym) {
         if(acronym.obtainAcronym().contains(" "))
             throw new NotASingleWord();
         if (!acronym.obtainAcronym().toUpperCase().matches("[A-Z]"))
