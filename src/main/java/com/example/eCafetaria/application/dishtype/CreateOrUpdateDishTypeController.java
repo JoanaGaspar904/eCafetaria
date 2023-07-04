@@ -2,7 +2,6 @@ package com.example.eCafetaria.application.dishtype;
 
 import com.example.eCafetaria.domain.dishtype.Acronym;
 import com.example.eCafetaria.domain.dishtype.DishType;
-import com.example.eCafetaria.domain.dishtype.exceptions.InvalidLenghtForDesignation;
 import com.example.eCafetaria.domain.dishtype.exceptions.NoSpecialCharacters;
 import com.example.eCafetaria.domain.dishtype.exceptions.NotASingleWord;
 import com.example.eCafetaria.repositories.DishTypeRepository;
@@ -13,7 +12,7 @@ import java.util.Optional;
 
 
 @Component
-public class CreateOrUpdateDishTypeController extends Exception{
+public class CreateOrUpdateDishTypeController{
     @Autowired
     DishTypeRepository repo;
     @Autowired

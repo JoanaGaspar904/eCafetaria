@@ -1,6 +1,5 @@
 package com.example.eCafetaria.domain.dishtype;
 
-import com.example.eCafetaria.domain.dishtype.exceptions.InvalidLenghtForDescription;
 import com.example.eCafetaria.domain.dishtype.exceptions.NoSpecialCharacters;
 import com.example.eCafetaria.domain.dishtype.exceptions.NotASingleWord;
 
@@ -10,7 +9,7 @@ import javax.persistence.*;
 
 
 @Entity
-public class DishType {
+public class DishType extends Exception{
 
     @EmbeddedId
     private Acronym acronym;
@@ -21,7 +20,7 @@ public class DishType {
     protected DishType() {
     }
 
-    public DishType(Acronym acronym, Description description) {
+    public DishType(Acronym acronym, Description description) throws NotASingleWord, NoSpecialCharacters{
         setAcronym(acronym);
         setDescription(description);
     }
@@ -29,11 +28,13 @@ public class DishType {
      * Except when we receive the acronym by user
      */
 
-    private void setAcronym(Acronym acronym) {
+    private void setAcronym(Acronym acronym) throws NotASingleWord, NoSpecialCharacters, StringIndexOutOfBoundsException {
         if(acronym.obtainAcronym().contains(" "))
             throw new NotASingleWord();
         if (!acronym.obtainAcronym().toUpperCase().matches("[A-Z]"))
             throw new NoSpecialCharacters();
+        if (acronym.obtainAcronym().length() > 10)
+            throw new StringIndexOutOfBoundsException();
        this.acronym = acronym;
     }
     /* This method is public because the user is allowed to change de description
@@ -51,7 +52,7 @@ public class DishType {
         return acronym;
     }
 
-    public Description getDesignation() {
+    public Description getDescription() {
         return description;
     }
 }

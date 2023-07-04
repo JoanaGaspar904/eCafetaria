@@ -10,11 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class DishTypeMapper {
+public class DishTypeMapper{
 
-    public DishType toDishType(AcronymDTO acronym, CreateOrUpdateDishTypeDTO dto) {
+    public DishType toDishType(AcronymDTO acronym, CreateOrUpdateDishTypeDTO dto) throws NotASingleWord, NoSpecialCharacters {
         return new DishType(new Acronym(acronym.acronym), new Description(dto.getDesignation()));
     }
+
     public List<DishTypeDTO> dishTypeDTOList (List<DishType> dishTypeList){
         List<DishTypeDTO> dishTypeDTOList = new ArrayList<>();
         if(!dishTypeList.isEmpty()){
@@ -32,4 +33,5 @@ public class DishTypeMapper {
     public DishTypeDTO toDTO(DishType dishType){
         return new DishTypeDTO(dishType.getAcronym().obtainAcronym(), dishType.getDesignation().getDesignation());
     }
+}
 }
