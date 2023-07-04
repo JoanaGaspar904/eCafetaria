@@ -45,7 +45,7 @@ class DescriptionTest {
     void Test_Description_Should_Accept_Any_Character(){
         String input = "Test that it accepts any character: !#$%&/()=?*º~ª_-.:,;1234567890";
         Description description_test = new Description(input);
-        Assertions.assertEquals(input,description_test.getDesignation());
+        Assertions.assertEquals(input,description_test.getDescription());
     }
 
 }

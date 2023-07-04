@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateOrUpdateDishTypeDTO {
-    String designation;
+    String description;
 }

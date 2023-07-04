@@ -22,7 +22,7 @@ public class FindDishTypeController {
     public Optional<DishTypeDTO> findByAcronym(Acronym acronym) {
         Optional<DishType> dishTypeChecker= dishTypeRepository.findById(acronym);
         if (dishTypeChecker.isPresent())
-            return Optional.of(dishTypeMapper.toDTO(dishTypeChecker.get()));
+            return Optional.of(dishTypeMapper.toDto(dishTypeChecker.get()));
         return Optional.empty();
     }
 }

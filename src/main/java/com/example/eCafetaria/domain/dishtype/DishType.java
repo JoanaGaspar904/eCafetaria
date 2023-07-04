@@ -1,8 +1,5 @@
 package com.example.eCafetaria.domain.dishtype;
 
-import com.example.eCafetaria.domain.dishtype.exceptions.InvalidLengthForDescription;
-import com.example.eCafetaria.domain.dishtype.exceptions.NoSpecialCharacters;
-import com.example.eCafetaria.domain.dishtype.exceptions.NotASingleWord;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.*;
@@ -14,6 +11,7 @@ public class DishType {
     private Acronym acronym;
     @Embedded
     private Description description;
+
 
 
     protected DishType() {

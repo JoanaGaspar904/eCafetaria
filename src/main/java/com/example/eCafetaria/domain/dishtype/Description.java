@@ -20,7 +20,7 @@ public class Description {
         this.description = description;
     }
 
-    public String getDesignation() {
+    public String getDescription() {
         return description;
     }
 }

@@ -24,7 +24,7 @@ public class CreateOrUpdateDishTypeController{
         } else{
             dishType = mapper.toDishType(acronym, dto);
         }
-        DishTypeDTO dishTypeDTO = mapper.toDTO(repo.save(dishType));
+        DishTypeDTO dishTypeDTO = mapper.toDto(repo.save(dishType));
         return dishTypeDTO;
     }
 
