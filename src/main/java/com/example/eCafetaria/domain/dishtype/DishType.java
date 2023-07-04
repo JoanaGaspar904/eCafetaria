@@ -1,10 +1,12 @@
 package com.example.eCafetaria.domain.dishtype;
 
-import com.example.eCafetaria.domain.dishtype.exceptions.InvalidLenghtForDescription;
+import com.example.eCafetaria.domain.dishtype.exceptions.NoSpecialCharacters;
+import com.example.eCafetaria.domain.dishtype.exceptions.NotASingleWord;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.*;
+
 
 @Entity
 public class DishType {
@@ -26,16 +28,19 @@ public class DishType {
      * Except when we receive the acronym by user
      */
 
-    private void setAcronym(Acronym acronym) {
-        this.acronym = new Acronym(acronym.obtainAcronym());
-
+    private void setAcronym(Acronym acronym) throws NotASingleWord, NoSpecialCharacters {
+        if(acronym.obtainAcronym().contains(" "))
+            throw new NotASingleWord();
+        if (!acronym.obtainAcronym().toUpperCase().matches("[A-Z]"))
+            throw new NoSpecialCharacters();
+       this.acronym = acronym;
     }
     /* This method is public because the user is allowed to change de description
      * wherever he wants.
      */
     public void setDescription(Description description) {
         if (description.getDesignation().length() < 1 || description.getDesignation().length() > 2048) {
-            throw new InvalidLenghtForDescription();
+            throw new InvalidLenghtForDescription("Error: Description has to be between 1 and 2048 characters!");
         }
         this.description = new Description(description.getDesignation());
     }

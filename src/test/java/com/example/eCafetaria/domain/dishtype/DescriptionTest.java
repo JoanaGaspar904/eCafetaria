@@ -48,13 +48,14 @@ class DescriptionTest {
             } else {
                 throw new InvalidLenghtForDescription();
             };
-        }, "An Exception was unexpedly thrown!");
+        }, "An Exception was unexpectedly thrown!");
     }
+
     @Test
-    void Test_Description_Should_Accepted_All_Chars(){
-        Description description_test = new Description();
-
-
+    void Test_Description_Should_Accept_Any_Character(){
+        String input = "Test that it accepts any character: !#$%&/()=?*º~ª_-.:,;1234567890";
+        Description description_test = new Description(input);
+        Assertions.assertEquals(input,description_test.getDesignation());
     }
 
 }

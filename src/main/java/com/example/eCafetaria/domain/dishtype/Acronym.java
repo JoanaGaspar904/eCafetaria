@@ -1,5 +1,7 @@
 package com.example.eCafetaria.domain.dishtype;
 
+import com.example.eCafetaria.domain.dishtype.exceptions.NotASingleWord;
+
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
@@ -12,7 +14,7 @@ public class Acronym implements Serializable {
         acronym = null;
     }
 
-    public Acronym(String acronym) {
+    public Acronym(String acronym) throws NotASingleWord{
         this.acronym = acronym;
     }
 

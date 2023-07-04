@@ -4,7 +4,6 @@ import com.example.eCafetaria.application.dishtype.CreateOrUpdateDishTypeControl
 import com.example.eCafetaria.application.dishtype.CreateOrUpdateDishTypeDTO;
 import com.example.eCafetaria.application.dishtype.DishTypeDTO;
 import com.example.eCafetaria.domain.dishtype.Acronym;
-import com.example.eCafetaria.domain.dishtype.exceptions.InvalidLenghtForDescription;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +20,8 @@ import java.util.Optional;
 public class DishTypeRestController {
     @Autowired
     FindDishTypeController findDishTypeController;
+    @Autowired
+    CreateOrUpdateDishTypeController createOrUpdateDishTypeController;
 
     @GetMapping
     public List<DishTypeDTO> searchAllDishType() {
@@ -40,7 +41,7 @@ public class DishTypeRestController {
     @Autowired
     CreateOrUpdateDishTypeController createOrUpdateDishTypeController;
     @PutMapping("/{Acronym}")
-    public DishTypeDTO CreateOrUpdateDishType (@PathVariable("Acronym") Acronym acronym, @RequestBody CreateOrUpdateDishTypeDTO dto) {
+    public DishTypeDTO CreateOrUpdateDishType (@PathVariable("Acronym") AcronymDTO acronym, @RequestBody CreateOrUpdateDishTypeDTO dto) {
         try {
             DishTypeDTO dishTypeDTO = createOrUpdateDishTypeController.createOrUpdateDishType(acronym, dto);
             return dishTypeDTO;
@@ -48,4 +49,5 @@ public class DishTypeRestController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
+
 }
