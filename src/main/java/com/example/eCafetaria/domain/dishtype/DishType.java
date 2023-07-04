@@ -20,18 +20,20 @@ public class DishType extends Exception{
 
     public DishType(Acronym acronym, Description description) throws NotASingleWord, NoSpecialCharacters{
         setAcronym(acronym);
-        setDesignation(description);
+        setDescription(description);
     }
 
-    private void setAcronym(Acronym acronym) throws NotASingleWord, NoSpecialCharacters {
+    private void setAcronym(Acronym acronym) throws NotASingleWord, NoSpecialCharacters, StringIndexOutOfBoundsException {
         if(acronym.obtainAcronym().contains(" "))
             throw new NotASingleWord();
         if (!acronym.obtainAcronym().toUpperCase().matches("[A-Z]"))
             throw new NoSpecialCharacters();
+        if (acronym.obtainAcronym().length() > 10)
+            throw new StringIndexOutOfBoundsException();
        this.acronym = acronym;
     }
 
-    public void setDesignation(Description description) {
+    public void setDescription(Description description) {
         if (description.getDesignation().length() < 1 || description.getDesignation().length() > 2048) {
             //   throw new InvalidLenghtForDesignation("Error: Description has to be between 1 and 2048 characters!");
         }
@@ -43,7 +45,7 @@ public class DishType extends Exception{
         return acronym;
     }
 
-    public Description getDesignation() {
+    public Description getDescription() {
         return description;
     }
 }
