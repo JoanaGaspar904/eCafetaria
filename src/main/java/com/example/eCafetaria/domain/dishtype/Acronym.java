@@ -18,8 +18,8 @@ public class Acronym implements Serializable {
     public Acronym(String acronym){
         if(acronym.contains(" "))
             throw new NotASingleWord();
-//        if (!acronym.toUpperCase().matches("^[A-Z]*$"))
-//            throw new NoSpecialCharacters();
+        if (!(acronym.toUpperCase().matches("^[A-Z]*$")))
+            throw new NoSpecialCharacters();
         if (acronym.length() > 10)
             throw new StringIndexOutOfBoundsException();
         this.acronym = acronym;
