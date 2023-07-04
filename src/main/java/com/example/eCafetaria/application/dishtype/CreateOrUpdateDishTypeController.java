@@ -13,13 +13,13 @@ import java.util.Optional;
 
 
 @Component
-public class CreateOrUpdateDishTypeController {
+public class CreateOrUpdateDishTypeController extends Exception{
     @Autowired
     DishTypeRepository repo;
     @Autowired
     DishTypeMapper mapper;
 
-    public DishTypeDTO createOrUpdateDishType(AcronymDTO acronym, CreateOrUpdateDishTypeDTO dto) {
+    public DishTypeDTO createOrUpdateDishType(AcronymDTO acronym, CreateOrUpdateDishTypeDTO dto) throws NotASingleWord, NoSpecialCharacters{
         Optional<DishType> optionalDishType = repo.findById(new Acronym(acronym.acronym));
         DishType dishType;
         if(optionalDishType.isPresent()){

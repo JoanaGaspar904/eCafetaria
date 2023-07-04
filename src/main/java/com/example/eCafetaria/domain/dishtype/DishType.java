@@ -1,13 +1,12 @@
 package com.example.eCafetaria.domain.dishtype;
 
-import com.example.eCafetaria.domain.dishtype.exceptions.InvalidLenghtForDesignation;
 import com.example.eCafetaria.domain.dishtype.exceptions.NoSpecialCharacters;
 import com.example.eCafetaria.domain.dishtype.exceptions.NotASingleWord;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.*;
-import javax.transaction.NotSupportedException;
+
 
 @Entity
 public class DishType extends Exception{

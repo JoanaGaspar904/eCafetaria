@@ -25,11 +25,12 @@ public class DishTypeMapper extends Exception{
         return dishTypeDTOList;
     }
 
-    public DishType update(DishType dishType, CreateOrUpdateDishTypeDTO dto) {
+    public DishType update(DishType dishType, CreateOrUpdateDishTypeDTO dto){
        dishType.setDescription(new Description(dto.getDesignation()));
        return dishType;
     }
-    public DishTypeDTO toDTO(DishType dishType) {
+    public DishTypeDTO toDTO(DishType dishType){
         return new DishTypeDTO(dishType.getAcronym().obtainAcronym(), dishType.getDesignation().getDesignation());
     }
+}
 }
