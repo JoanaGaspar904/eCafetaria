@@ -25,7 +25,7 @@ public class DishTypeMapper {
     }
 
     public DishType update(DishType dishType, CreateOrUpdateDishTypeDTO dto) {
-       dishType.setDesignation(new Description(dto.getDesignation()));
+       dishType.setDescription(new Description(dto.getDesignation()));
        return dishType;
     }
     public DishTypeDTO toDTO(DishType dishType) {

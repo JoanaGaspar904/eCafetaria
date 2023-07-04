@@ -1,6 +1,6 @@
 package com.example.eCafetaria.domain.dishtype.exceptions;
 
-public class InvalidLenghtForDescription extends Exception{
+public class InvalidLenghtForDescription extends RuntimeException{
     public InvalidLenghtForDescription(){
         super("Invalid Length for 'Description'. Has to be between 1 and 2048 characters!");
     }

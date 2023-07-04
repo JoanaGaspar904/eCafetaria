@@ -4,6 +4,7 @@ import com.example.eCafetaria.application.dishtype.CreateOrUpdateDishTypeControl
 import com.example.eCafetaria.application.dishtype.CreateOrUpdateDishTypeDTO;
 import com.example.eCafetaria.application.dishtype.DishTypeDTO;
 import com.example.eCafetaria.domain.dishtype.Acronym;
+import com.example.eCafetaria.domain.dishtype.exceptions.InvalidLenghtForDescription;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -38,9 +39,12 @@ public class DishTypeRestController {
     @Autowired
     CreateOrUpdateDishTypeController createOrUpdateDishTypeController;
     @PutMapping("/{Acronym}")
-    public DishTypeDTO CreateOrUpdateDishType (@PathVariable("Acronym") Acronym acronym, @RequestBody CreateOrUpdateDishTypeDTO dto){
-        DishTypeDTO dishTypeDTO = createOrUpdateDishTypeController.createOrUpdateDishType(acronym,dto);
-        return dishTypeDTO;
+    public DishTypeDTO CreateOrUpdateDishType (@PathVariable("Acronym") Acronym acronym, @RequestBody CreateOrUpdateDishTypeDTO dto) {
+        try {
+            DishTypeDTO dishTypeDTO = createOrUpdateDishTypeController.createOrUpdateDishType(acronym, dto);
+            return dishTypeDTO;
+        }catch (InvalidLenghtForDescription e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
-
 }
