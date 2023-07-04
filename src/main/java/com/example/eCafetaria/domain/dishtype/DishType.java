@@ -1,31 +1,35 @@
 package com.example.eCafetaria.domain.dishtype;
 
 import com.example.eCafetaria.domain.dishtype.exceptions.InvalidLenghtForDesignation;
+import com.example.eCafetaria.domain.dishtype.exceptions.NoSpecialCharacters;
+import com.example.eCafetaria.domain.dishtype.exceptions.NotASingleWord;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.*;
+import javax.transaction.NotSupportedException;
 
 @Entity
-public class DishType {
+public class DishType extends Exception{
 
     @EmbeddedId
     private Acronym acronym;
     @Embedded
     private Description description;
-
-
     protected DishType() {
     }
 
-    public DishType(Acronym acronym, Description description) {
+    public DishType(Acronym acronym, Description description) throws NotASingleWord, NoSpecialCharacters{
         setAcronym(acronym);
         setDesignation(description);
     }
 
-    private void setAcronym(Acronym acronym) {
-        this.acronym = new Acronym(acronym.getAcronym());
-
+    private void setAcronym(Acronym acronym) throws NotASingleWord, NoSpecialCharacters {
+        if(acronym.obtainAcronym().contains(" "))
+            throw new NotASingleWord();
+        if (!acronym.obtainAcronym().toUpperCase().matches("[A-Z]"))
+            throw new NoSpecialCharacters();
+       this.acronym = acronym;
     }
 
     public void setDesignation(Description description) {

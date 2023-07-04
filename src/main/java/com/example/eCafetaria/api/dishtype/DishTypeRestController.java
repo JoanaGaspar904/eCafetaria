@@ -19,14 +19,15 @@ import java.util.Optional;
 public class DishTypeRestController {
     @Autowired
     FindDishTypeController findDishTypeController;
+    @Autowired
+    CreateOrUpdateDishTypeController createOrUpdateDishTypeController;
 
     @GetMapping
     public List<DishTypeDTO> searchAllDishType() {
-        List<DishTypeDTO> dishTypeDTOList = new ArrayList<>();
+        List<DishTypeDTO> dishTypeDTOList = findDishTypeController.findAll();
         dishTypeDTOList = findDishTypeController.findAll();
         return dishTypeDTOList;
     }
-
     @GetMapping("/{acronym}")
     public DishTypeDTO searchByAcronym(@PathVariable("acronym") Acronym acronym){
         Optional<DishTypeDTO> dishTypeChecker = findDishTypeController.findByAcronym(acronym);
@@ -34,13 +35,9 @@ public class DishTypeRestController {
             return dishTypeChecker.get();
         throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
-
-    @Autowired
-    CreateOrUpdateDishTypeController createOrUpdateDishTypeController;
-    @PutMapping("/{Acronym}")
-    public DishTypeDTO CreateOrUpdateDishType (@PathVariable("Acronym") Acronym acronym, @RequestBody CreateOrUpdateDishTypeDTO dto){
+    @PutMapping("/{acronym}")
+    public DishTypeDTO CreateOrUpdateDishType (@PathVariable("acronym") Acronym acronym, @RequestBody CreateOrUpdateDishTypeDTO dto) {
         DishTypeDTO dishTypeDTO = createOrUpdateDishTypeController.createOrUpdateDishType(acronym,dto);
         return dishTypeDTO;
     }
-
 }

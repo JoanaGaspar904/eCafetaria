@@ -11,9 +11,7 @@ import org.junit.runners.JUnit4;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DesignationTest {
-
-
+class DescriptionTest {
     @Test
     void Test_Designation_Should_Not_Go_Beyond_2048() throws InvalidLenghtForDesignation {
         //Arrange
@@ -22,7 +20,7 @@ class DesignationTest {
         //Act
         try {
             if (testStringWith2049Characters.length() > 1 || testStringWith2049Characters.length() < 2048) {
-                Designation test_designation = new Designation(testStringWith2049Characters);
+                Description test_designation = new Description(testStringWith2049Characters);
             } else {
                 throw new InvalidLenghtForDesignation();
             }
@@ -41,7 +39,7 @@ class DesignationTest {
         //Act
         try {
             if (testStringWith2049Characters.length() > 1 || testStringWith2049Characters.length() < 2048) {
-                Designation test_designation = new Designation(testStringWith2049Characters);
+                Description test_designation = new Description(testStringWith2049Characters);
             } else {
                 throw new InvalidLenghtForDesignation();
             }
@@ -58,7 +56,7 @@ class DesignationTest {
         String testStringWith2049Characters = "Lorem ipsum dolor sit amet";
 
             Assertions.assertDoesNotThrow(()->{      if (testStringWith2049Characters.length() > 1 || testStringWith2049Characters.length() < 2048) {
-                Designation test_designation = new Designation(testStringWith2049Characters);
+                Description test_designation = new Description(testStringWith2049Characters);
             } else {
                 throw new InvalidLenghtForDesignation();
             };
