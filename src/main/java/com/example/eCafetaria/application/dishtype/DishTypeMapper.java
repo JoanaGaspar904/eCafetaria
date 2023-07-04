@@ -3,14 +3,16 @@ package com.example.eCafetaria.application.dishtype;
 import com.example.eCafetaria.domain.dishtype.Acronym;
 import com.example.eCafetaria.domain.dishtype.Description;
 import com.example.eCafetaria.domain.dishtype.DishType;
+import com.example.eCafetaria.domain.dishtype.exceptions.NoSpecialCharacters;
+import com.example.eCafetaria.domain.dishtype.exceptions.NotASingleWord;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class DishTypeMapper {
+public class DishTypeMapper extends Exception{
 
-    public DishType toDishType(AcronymDTO acronym, CreateOrUpdateDishTypeDTO dto)throws NotASingleWord, NoSpecialCharacters{
+    public DishType toDishType(AcronymDTO acronym, CreateOrUpdateDishTypeDTO dto) throws NotASingleWord, NoSpecialCharacters {
         return new DishType(new Acronym(acronym.acronym), new Description(dto.getDesignation()));
 
     public List<DishTypeDTO> dishTypeDTOList (List<DishType> dishTypeList){
