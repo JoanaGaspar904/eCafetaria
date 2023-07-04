@@ -15,7 +15,7 @@ public class FindDishTypeController {
     @Autowired
     DishTypeMapper dishTypeMapper;
 
-    public List<DishTypeDTO> findAll() {
+    public Iterable<DishTypeDTO> findAll() {
         return dishTypeMapper.dishTypeDTOList(dishTypeRepository.findAll());
     }
 

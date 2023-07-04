@@ -7,5 +7,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class DishTypeDTO {
     String acronym;
-    String designation;
+    String description;
 }

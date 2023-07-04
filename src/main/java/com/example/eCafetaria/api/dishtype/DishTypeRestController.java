@@ -21,8 +21,8 @@ public class DishTypeRestController {
     CreateOrUpdateDishTypeController createOrUpdateDishTypeController;
 
     @GetMapping
-    public List<DishTypeDTO> searchAllDishType() {
-        List<DishTypeDTO> dishTypeDTOList = new ArrayList<>();
+    public Iterable<DishTypeDTO> searchAllDishType() {
+        Iterable<DishTypeDTO> dishTypeDTOList = new ArrayList<>();
         dishTypeDTOList = findDishTypeController.findAll();
         return dishTypeDTOList;
     }
