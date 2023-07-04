@@ -1,7 +1,5 @@
 package com.example.eCafetaria.domain.dishtype;
 
-import com.example.eCafetaria.domain.dishtype.exceptions.InvalidLenghtForDesignation;
-
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.*;
@@ -24,7 +22,7 @@ public class DishType {
     }
 
     private void setAcronym(Acronym acronym) {
-        this.acronym = new Acronym(acronym.getAcronym());
+        this.acronym = new Acronym(acronym.obtainAcronym());
 
     }
 
