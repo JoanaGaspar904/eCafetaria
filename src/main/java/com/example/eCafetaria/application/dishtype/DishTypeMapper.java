@@ -3,8 +3,6 @@ package com.example.eCafetaria.application.dishtype;
 import com.example.eCafetaria.domain.dishtype.Acronym;
 import com.example.eCafetaria.domain.dishtype.Description;
 import com.example.eCafetaria.domain.dishtype.DishType;
-import com.example.eCafetaria.domain.dishtype.exceptions.NoSpecialCharacters;
-import com.example.eCafetaria.domain.dishtype.exceptions.NotASingleWord;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +10,8 @@ import java.util.List;
 @Component
 public class DishTypeMapper {
 
-    public DishType toDishType(Acronym acronym, CreateOrUpdateDishTypeDTO dto) throws NotASingleWord, NoSpecialCharacters {
-        return new DishType(acronym, new Description(dto.getDesignation()));
-    }
+    public DishType toDishType(AcronymDTO acronym, CreateOrUpdateDishTypeDTO dto)throws NotASingleWord, NoSpecialCharacters{
+        return new DishType(new Acronym(acronym.acronym), new Description(dto.getDesignation()));
 
     public List<DishTypeDTO> dishTypeDTOList (List<DishType> dishTypeList){
         List<DishTypeDTO> dishTypeDTOList = new ArrayList<>();
@@ -27,7 +24,7 @@ public class DishTypeMapper {
     }
 
     public DishType update(DishType dishType, CreateOrUpdateDishTypeDTO dto) {
-       dishType.setDesignation(new Description(dto.getDesignation()));
+       dishType.setDescription(new Description(dto.getDesignation()));
        return dishType;
     }
     public DishTypeDTO toDTO(DishType dishType) {

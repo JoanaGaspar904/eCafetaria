@@ -24,10 +24,11 @@ public class DishTypeRestController {
 
     @GetMapping
     public List<DishTypeDTO> searchAllDishType() {
-        List<DishTypeDTO> dishTypeDTOList = findDishTypeController.findAll();
+        List<DishTypeDTO> dishTypeDTOList = new ArrayList<>();
         dishTypeDTOList = findDishTypeController.findAll();
         return dishTypeDTOList;
     }
+
     @GetMapping("/{acronym}")
     public DishTypeDTO searchByAcronym(@PathVariable("acronym") Acronym acronym){
         Optional<DishTypeDTO> dishTypeChecker = findDishTypeController.findByAcronym(acronym);
@@ -35,9 +36,17 @@ public class DishTypeRestController {
             return dishTypeChecker.get();
         throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
-    @PutMapping("/{acronym}")
-    public DishTypeDTO CreateOrUpdateDishType (@PathVariable("acronym") Acronym acronym, @RequestBody CreateOrUpdateDishTypeDTO dto) {
-        DishTypeDTO dishTypeDTO = createOrUpdateDishTypeController.createOrUpdateDishType(acronym,dto);
-        return dishTypeDTO;
+
+    @Autowired
+    CreateOrUpdateDishTypeController createOrUpdateDishTypeController;
+    @PutMapping("/{Acronym}")
+    public DishTypeDTO CreateOrUpdateDishType (@PathVariable("Acronym") AcronymDTO acronym, @RequestBody CreateOrUpdateDishTypeDTO dto) {
+        try {
+            DishTypeDTO dishTypeDTO = createOrUpdateDishTypeController.createOrUpdateDishType(acronym, dto);
+            return dishTypeDTO;
+        }catch (InvalidLenghtForDescription e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
+
 }
