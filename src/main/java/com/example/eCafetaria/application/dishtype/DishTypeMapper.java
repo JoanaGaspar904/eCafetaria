@@ -25,6 +25,9 @@ public abstract class DishTypeMapper {
         return a.obtainAcronym();
     }
     public String descriptionToString(Description d){
+        if(d==null){
+            return "";
+        }
         return d.getDescription();
     }
     public Acronym stringToAcronym (String a){
