@@ -28,22 +28,17 @@ public class DishType {
      */
 
     private void setAcronym(Acronym acronym) {
-        if(acronym.obtainAcronym().contains(" "))
-            throw new NotASingleWord();
-        if (!acronym.obtainAcronym().toUpperCase().matches("[A-Z]"))
-            throw new NoSpecialCharacters();
-        if (acronym.obtainAcronym().length() > 10)
-            throw new StringIndexOutOfBoundsException();
+        if (acronym == null)
+            throw new IllegalArgumentException();
        this.acronym = acronym;
     }
     /* This method is public because the user is allowed to change de description
      * wherever he wants.
      */
     public void setDescription(Description description) {
-        if (description.getDesignation().length() < 1 || description.getDesignation().length() > 2048) {
-            throw new InvalidLengthForDescription("Error: Description has to be between 1 and 2048 characters!");
-        }
-        this.description = new Description(description.getDesignation());
+        if (description == null)
+            throw new IllegalArgumentException();
+        this.description = description;
     }
 
 

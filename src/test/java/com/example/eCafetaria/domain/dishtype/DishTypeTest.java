@@ -10,27 +10,24 @@ class DishTypeTest {
     @Test
     void Test_setAcronym_Not_A_Single_Word() {
         String acronymToTest = "C R";
-        String descriptionToTest = "carne";
         Assertions.assertThrows(NotASingleWord.class, () -> {
-            new DishType(new Acronym(acronymToTest), new Description(descriptionToTest));
+            new Acronym(acronymToTest);
         });
     }
 
     @Test
     void Test_setAcronym_No_Special_Characters() {
         String acronymToTest = "C!R";
-        String descriptionToTest = "carne";
         Assertions.assertThrows(NoSpecialCharacters.class, () -> {
-            new DishType(new Acronym(acronymToTest), new Description(descriptionToTest));
+            new Acronym(acronymToTest);
         });
     }
 
     @Test
     void Test_setAcronym_Max_10_Characters() {
         String acronymToTest = "CARCARCARCAR";
-        String descriptionToTest = "carne";
         Assertions.assertThrows(StringIndexOutOfBoundsException.class, () -> {
-            new DishType(new Acronym(acronymToTest), new Description(descriptionToTest));
+            new Acronym(acronymToTest);
         });
     }
 }

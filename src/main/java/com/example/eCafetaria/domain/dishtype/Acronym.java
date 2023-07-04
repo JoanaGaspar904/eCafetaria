@@ -1,5 +1,6 @@
 package com.example.eCafetaria.domain.dishtype;
 
+import com.example.eCafetaria.domain.dishtype.exceptions.NoSpecialCharacters;
 import com.example.eCafetaria.domain.dishtype.exceptions.NotASingleWord;
 
 import javax.persistence.Embeddable;
@@ -14,7 +15,13 @@ public class Acronym implements Serializable {
         acronym = null;
     }
 
-    public Acronym(String acronym) throws NotASingleWord{
+    public Acronym(String acronym){
+        if(acronym.contains(" "))
+            throw new NotASingleWord();
+        if (!acronym.toUpperCase().matches("[A-Z]"))
+            throw new NoSpecialCharacters();
+        if (acronym.length() > 10)
+            throw new StringIndexOutOfBoundsException();
         this.acronym = acronym;
     }
 
