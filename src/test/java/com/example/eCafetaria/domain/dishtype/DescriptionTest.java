@@ -18,22 +18,14 @@ class DescriptionTest {
     }
 
     @Test
-    void est_Description_Should_Not_Go_Bellow_1() throws InvalidLengthForDescription {
+    void Test_Description_Should_Not_Go_Bellow_1() {
         //Arrange
-        String testStringWith2049Characters = "L";
+        String testStringWith2049Characters = "";
 
         //Act
-        try {
-            if (testStringWith2049Characters.length() > 1 || testStringWith2049Characters.length() < 2048) {
-                Description test_description = new Description(testStringWith2049Characters);
-            } else {
-                throw new InvalidLengthForDescription();
-            }
-        } catch (InvalidLengthForDescription e) {
-            String expectedMessage = "Invalid Length for 'Designation'. Has to be between 1 and 2048 characters!";
-            String actualMessage = e.getMessage();
-            Assertions.assertEquals(expectedMessage, actualMessage);
-        }
+        Assertions.assertThrows(InvalidLengthForDescription.class, () -> {
+            new Description(testStringWith2049Characters);
+        });
     }
 
     @Test
