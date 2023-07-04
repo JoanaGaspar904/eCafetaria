@@ -47,7 +47,7 @@ class DescriptionTest {
 
     @Test
     void Test_Designation_Should_Create_Designation() throws InvalidLenghtForDescription {
-        //Arrange
+
         String testStringWith2049Characters = "Lorem ipsum dolor sit amet";
 
             Assertions.assertDoesNotThrow(()->{      if (testStringWith2049Characters.length() > 1 || testStringWith2049Characters.length() < 2048) {
@@ -55,7 +55,7 @@ class DescriptionTest {
             } else {
                 throw new InvalidLenghtForDescription();
             };
-        }, "An Exception was unexpedly thrown!");
+        }, "An Exception was unexpectedly thrown!");
     }
 
 }

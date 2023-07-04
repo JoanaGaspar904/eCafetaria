@@ -10,8 +10,8 @@ import java.util.List;
 @Component
 public class DishTypeMapper {
 
-    public DishType toDishType(Acronym acronym, CreateOrUpdateDishTypeDTO dto){
-        return new DishType(acronym, new Description(dto.getDesignation()));
+    public DishType toDishType(AcronymDTO acronym, CreateOrUpdateDishTypeDTO dto){
+        return new DishType(new Acronym(acronym.acronym), new Description(dto.getDesignation()));
     }
 
     public List<DishTypeDTO> dishTypeDTOList (List<DishType> dishTypeList){
