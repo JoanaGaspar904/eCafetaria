@@ -21,7 +21,6 @@ class DescriptionTest {
     void Test_Description_Should_Not_Go_Bellow_1() {
         //Arrange
         String testStringWith2049Characters = "";
-
         //Act
         Assertions.assertThrows(InvalidLengthForDescription.class, () -> {
             new Description(testStringWith2049Characters);
@@ -29,16 +28,11 @@ class DescriptionTest {
     }
 
     @Test
-    void Test_Description_Should_Create_Designation() throws InvalidLengthForDescription {
+    void Test_Description_Should_Create_Designation() {
         //Arrange
-        String testStringWith2049Characters = "Lorem ipsum dolor sit amet";
-
-            Assertions.assertDoesNotThrow(()->{      if (testStringWith2049Characters.length() > 1 || testStringWith2049Characters.length() < 2048) {
-                Description test_description = new Description(testStringWith2049Characters);
-            } else {
-                throw new InvalidLengthForDescription();
-            };
-        }, "An Exception was unexpectedly thrown!");
+        String testStringWith26Characters = "Lorem ipsum dolor sit amet";
+        Description description = new Description(testStringWith26Characters);
+        Assertions.assertEquals(testStringWith26Characters, description.getDescription());
     }
 
     @Test
