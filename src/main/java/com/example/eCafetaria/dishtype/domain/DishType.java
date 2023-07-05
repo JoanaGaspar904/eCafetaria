@@ -1,4 +1,4 @@
-package com.example.eCafetaria.domain.dishtype;
+package com.example.eCafetaria.dishtype.domain;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -12,10 +12,13 @@ public class DishType {
     @Embedded
     private Description description;
 
-
+    @Version
+    private long version;
 
     protected DishType() {
     }
+
+
 
     public DishType(Acronym acronym, Description description){
         setAcronym(acronym);
@@ -39,7 +42,9 @@ public class DishType {
         this.description = description;
     }
 
-
+    public long getVersion() {
+        return version;
+    }
     public Acronym getAcronym() {
         return acronym;
     }

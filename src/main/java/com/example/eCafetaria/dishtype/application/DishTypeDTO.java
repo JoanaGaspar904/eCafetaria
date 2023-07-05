@@ -1,4 +1,4 @@
-package com.example.eCafetaria.application.dishtype;
+package com.example.eCafetaria.dishtype.application;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,4 +8,5 @@ import lombok.Data;
 public class DishTypeDTO {
     String acronym;
     String description;
+
 }

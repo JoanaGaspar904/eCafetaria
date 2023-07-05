@@ -1,4 +1,4 @@
-package com.example.eCafetaria.domain.dishtype.exceptions;
+package com.example.eCafetaria.dishtype.domain.exceptions;
 
 public class NoSpecialCharacters extends RuntimeException {
     public NoSpecialCharacters() {

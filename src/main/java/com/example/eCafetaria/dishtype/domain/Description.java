@@ -1,6 +1,6 @@
-package com.example.eCafetaria.domain.dishtype;
+package com.example.eCafetaria.dishtype.domain;
 
-import com.example.eCafetaria.domain.dishtype.exceptions.InvalidLengthForDescription;
+import com.example.eCafetaria.dishtype.domain.exceptions.InvalidLengthForDescription;
 
 import javax.persistence.Embeddable;
 

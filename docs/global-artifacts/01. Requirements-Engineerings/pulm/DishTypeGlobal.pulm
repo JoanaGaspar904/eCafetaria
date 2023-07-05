@@ -1,11 +1,42 @@
 @startuml
 
-DishType --> DishTypeDesignation
-class DishType {
-private Acronym
+Preco --> MoedaPrato
+Preco --> MontantePrato
+Refeicao --> "1" Prato
+Prato -left-> "1" TipoPrato
+InformacaoNutricional <-left- Prato
+TipoPrato -left-> DesignacaoTipoPrato
+Prato -- "1" Preco : vendido por
+Prato -- "1" Nome : identificado por
+InformacaoNutricional -right-> Calorias
+Calorias -right-> "1" UndMedidaCalorias
+Calorias -up-> "1" MagnitudeCalorias
+InformacaoNutricional --> QuantidadeSal
+QuantidadeSal -left-> "1" MagnitudeQtdSal
+QuantidadeSal --> "1" UndMedidaSal
+InformacaoNutricional --> "1" QuantidadeGordura
+QuantidadeGordura --> "1" MagnitudeQtdGordura
+QuantidadeGordura -right-> "1" UndMedidaGordura
+Prato --> "1" NomeURI
+
+
+
+class Refeicao {}
+class TipoPrato {}
+class DesignacaoTipoPrato {
+Acrónimo - 3 Letras
 }
-class DishTypeDesignation {
-private String description
-}
+class Prato {}
+class Preco {}
+class NomeURI {}
+class InformacaoNutricional {}
+class Calorias {}
+class QuantidadeSal {}
+class QuantidadeGordura {}
+class MagnitudeQtdGordura {}
+class MagnitudeCalorias {}
+class MagnitudeQtdSal {}
+class UndMedidaGordura {}
+class UndMedidaCalorias {}
 
 @enduml

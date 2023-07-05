@@ -1,7 +1,8 @@
 package com.example.eCafetaria.domain.dishtype;
 
-import com.example.eCafetaria.domain.dishtype.exceptions.NoSpecialCharacters;
-import com.example.eCafetaria.domain.dishtype.exceptions.NotASingleWord;
+import com.example.eCafetaria.dishtype.domain.Acronym;
+import com.example.eCafetaria.dishtype.domain.exceptions.NoSpecialCharacters;
+import com.example.eCafetaria.dishtype.domain.exceptions.NotASingleWord;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

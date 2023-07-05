@@ -1,4 +1,4 @@
-package com.example.eCafetaria.application.dishtype;
+package com.example.eCafetaria.dishtype.application;
 
 import lombok.Data;
 import lombok.AllArgsConstructor;

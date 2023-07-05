@@ -1,6 +1,7 @@
 package com.example.eCafetaria.domain.dishtype;
 
-import com.example.eCafetaria.domain.dishtype.exceptions.InvalidLengthForDescription;
+import com.example.eCafetaria.dishtype.domain.Description;
+import com.example.eCafetaria.dishtype.domain.exceptions.InvalidLengthForDescription;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

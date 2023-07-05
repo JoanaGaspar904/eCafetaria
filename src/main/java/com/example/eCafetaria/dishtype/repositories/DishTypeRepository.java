@@ -1,7 +1,7 @@
-package com.example.eCafetaria.repositories;
+package com.example.eCafetaria.dishtype.repositories;
 
-import com.example.eCafetaria.domain.dishtype.Acronym;
-import com.example.eCafetaria.domain.dishtype.DishType;
+import com.example.eCafetaria.dishtype.domain.Acronym;
+import com.example.eCafetaria.dishtype.domain.DishType;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;

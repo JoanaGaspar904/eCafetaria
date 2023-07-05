@@ -1,8 +1,8 @@
-package com.example.eCafetaria.repositories.impl;
+package com.example.eCafetaria.dishtype.repositories.impl;
 
-import com.example.eCafetaria.domain.dishtype.Acronym;
-import com.example.eCafetaria.domain.dishtype.DishType;
-import com.example.eCafetaria.repositories.DishTypeRepository;
+import com.example.eCafetaria.dishtype.domain.Acronym;
+import com.example.eCafetaria.dishtype.domain.DishType;
+import com.example.eCafetaria.dishtype.repositories.DishTypeRepository;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.repository.CrudRepository;
 

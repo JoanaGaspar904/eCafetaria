@@ -1,7 +1,7 @@
-package com.example.eCafetaria.domain.dishtype;
+package com.example.eCafetaria.dishtype.domain;
 
-import com.example.eCafetaria.domain.dishtype.exceptions.NoSpecialCharacters;
-import com.example.eCafetaria.domain.dishtype.exceptions.NotASingleWord;
+import com.example.eCafetaria.dishtype.domain.exceptions.NoSpecialCharacters;
+import com.example.eCafetaria.dishtype.domain.exceptions.NotASingleWord;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;

@@ -1,8 +1,8 @@
-package com.example.eCafetaria.application.dishtype;
+package com.example.eCafetaria.dishtype.application;
 
-import com.example.eCafetaria.domain.dishtype.Acronym;
-import com.example.eCafetaria.domain.dishtype.DishType;
-import com.example.eCafetaria.repositories.DishTypeRepository;
+import com.example.eCafetaria.dishtype.domain.Acronym;
+import com.example.eCafetaria.dishtype.domain.DishType;
+import com.example.eCafetaria.dishtype.repositories.DishTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

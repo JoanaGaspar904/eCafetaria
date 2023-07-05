@@ -1,11 +1,10 @@
-package com.example.eCafetaria.application.dishtype;
+package com.example.eCafetaria.dishtype.application;
 
-import com.example.eCafetaria.domain.dishtype.Acronym;
-import com.example.eCafetaria.domain.dishtype.DishType;
-import com.example.eCafetaria.repositories.DishTypeRepository;
+import com.example.eCafetaria.dishtype.domain.Acronym;
+import com.example.eCafetaria.dishtype.domain.DishType;
+import com.example.eCafetaria.dishtype.repositories.DishTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -18,11 +17,12 @@ public class FindDishTypeController {
     public Iterable<DishTypeDTO> findAll() {
         return dishTypeMapper.dishTypeDTOList(dishTypeRepository.findAll());
     }
-
-    public Optional<DishTypeDTO> findByAcronym(Acronym acronym) {
+    // novo -- Optional devolve DishType em vez de DishTypeDTO
+    // outro -- dishT
+    public Optional<DishType> findByAcronym(Acronym acronym) {
         Optional<DishType> dishTypeChecker= dishTypeRepository.findById(acronym);
         if (dishTypeChecker.isPresent())
-            return Optional.of(dishTypeMapper.toDto(dishTypeChecker.get()));
+            return Optional.of(dishTypeChecker.get());
         return Optional.empty();
     }
 }
