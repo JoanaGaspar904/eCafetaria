@@ -16,7 +16,7 @@ public class CreateOrUpdateDishTypeController{
     @Autowired
     DishTypeMapper mapper;
 
-    public DishTypeDTO createOrUpdateDishType(AcronymDTO acronym, CreateOrUpdateDishTypeDTO dto) {
+    public DishType createOrUpdateDishType(Long disiredVersion, AcronymDTO acronym, CreateOrUpdateDishTypeDTO dto) {
         Optional<DishType> optionalDishType = repo.findById(new Acronym(acronym.acronym));
         DishType dishType;
         if(optionalDishType.isPresent()){
@@ -25,7 +25,7 @@ public class CreateOrUpdateDishTypeController{
             dishType = mapper.toDishType(acronym, dto);
         }
         DishTypeDTO dishTypeDTO = mapper.toDto(repo.save(dishType));
-        return dishTypeDTO;
+        return dishType;
     }
-
+    
 }
