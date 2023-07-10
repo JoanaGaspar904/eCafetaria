@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateOrUpdateDishTypeDTO {
+public class DishTypeDescriptionDTO {
     String description;
 }

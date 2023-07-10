@@ -8,24 +8,16 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-
 @Component
-public class CreateOrUpdateDishTypeController{
-    @Autowired
-    DishTypeRepository repo;
+public class UpdateDishType {
     @Autowired
     DishTypeMapper mapper;
+    @Autowired
+    DishTypeRepository repo;
 
-    public DishType createOrUpdateDishType(Long disiredVersion, AcronymDTO acronym, CreateOrUpdateDishTypeDTO dto) {
+
+    public DishType updateDishType(Long versionFromIfMatchHeader, AcronymDTO acronym, DishTypeDescriptionDTO descriptionDto) {
         Optional<DishType> optionalDishType = repo.findById(new Acronym(acronym.acronym));
-        DishType dishType;
-        if(optionalDishType.isPresent()){
-            dishType = mapper.update(optionalDishType.get(), dto);
-        } else{
-            dishType = mapper.toDishType(acronym, dto);
-        }
-        DishTypeDTO dishTypeDTO = mapper.toDto(repo.save(dishType));
-        return dishType;
+        return mapper.update(optionalDishType.get(), descriptionDto);
     }
-    
 }

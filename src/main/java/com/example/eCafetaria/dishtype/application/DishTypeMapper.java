@@ -11,11 +11,11 @@ import org.mapstruct.MappingTarget;
 public abstract class DishTypeMapper {
 
     public abstract DishTypeDTO toDto(DishType dishType);
-    public abstract DishType toDishType(AcronymDTO acronym, CreateOrUpdateDishTypeDTO dto);
+    public abstract DishType toDishType(AcronymDTO acronym, DishTypeDescriptionDTO dto);
 
     public abstract Iterable<DishTypeDTO> dishTypeDTOList (Iterable<DishType> dishTypeList);
 
-    public abstract DishType update(@MappingTarget DishType dishType, CreateOrUpdateDishTypeDTO dto);
+    public abstract DishType update(@MappingTarget DishType dishType, DishTypeDescriptionDTO dto);
 
 
     public String acronymToString(Acronym a){

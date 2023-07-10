@@ -2,7 +2,6 @@ package com.example.eCafetaria.dishtype.api;
 
 import com.example.eCafetaria.dishtype.application.*;
 import com.example.eCafetaria.dishtype.domain.Acronym;
-import com.example.eCafetaria.dishtype.domain.exceptions.InvalidLengthForDescription;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,10 +19,12 @@ public class DishTypeRestController {
     @Autowired
     FindDishTypeController findDishTypeController;
     @Autowired
-    CreateOrUpdateDishTypeController createOrUpdateDishTypeController;
+    CreateDishTypeController createDishTypeController;
     //novo - para poder usar .getversion para acesso ao domain
     @Autowired
     DishTypeMapper dishTypeMapper;
+    @Autowired
+    UpdateDishType updateDishType;
 
     @GetMapping
     public Iterable<DishTypeDTO> searchAllDishType() {
@@ -41,14 +42,14 @@ public class DishTypeRestController {
     }
 
     @PutMapping("/{Acronym}")
-    public ResponseEntity<DishTypeDTO> CreateOrUpdateDishType(final WebRequest request, @PathVariable("Acronym") AcronymDTO acronym, @RequestBody CreateOrUpdateDishTypeDTO dto) {
+    public ResponseEntity<DishTypeDTO> CreateOrUpdateDishType(final WebRequest request, @PathVariable("Acronym") AcronymDTO acronym, @RequestBody DishTypeDescriptionDTO descriptionDto) {
         final String ifMatchValue = request.getHeader("if-Match");
         if (ifMatchValue == null || ifMatchValue.isEmpty()) {
-            final var dishType = createOrUpdateDishTypeController.createOrUpdateDishType(getVersionFromIfMatchHeader(ifMatchValue),acronym, dto);
+            final var dishType = createDishTypeController.createDishType(acronym, descriptionDto);
             final var dishTypeURI = ServletUriComponentsBuilder.fromCurrentRequestUri().pathSegment(dishType.getAcronym().obtainAcronym()).build().toUri();
             return ResponseEntity.created(dishTypeURI).eTag(Long.toString(dishType.getVersion())).body(dishTypeMapper.toDto(dishType));
         }
-        final var dishType = createOrUpdateDishTypeController.createOrUpdateDishType(getVersionFromIfMatchHeader(ifMatchValue), acronym, dto);
+        final var dishType = updateDishType.updateDishType(getVersionFromIfMatchHeader(ifMatchValue), acronym, descriptionDto);
         return ResponseEntity.ok().eTag(Long.toString(dishType.getVersion())).body(dishTypeMapper.toDto(dishType));
     }
 
