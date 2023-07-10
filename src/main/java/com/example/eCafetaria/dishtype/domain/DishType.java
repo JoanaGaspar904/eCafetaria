@@ -3,6 +3,9 @@ package com.example.eCafetaria.dishtype.domain;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class DishType {
@@ -10,6 +13,7 @@ public class DishType {
     @EmbeddedId
     private Acronym acronym;
     @Embedded
+    @Column(nullable = false, unique = false, updatable = true)
     private Description description;
 
     @Version

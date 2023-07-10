@@ -11,7 +11,7 @@ import org.mapstruct.MappingTarget;
 public abstract class DishTypeMapper {
 
     public abstract DishTypeDTO toDto(DishType dishType);
-    public abstract DishType toDishType(AcronymDTO acronym, DishTypeDescriptionDTO dto);
+    public abstract DishType toDishType(DishTypeAcronymDTO acronym, DishTypeDescriptionDTO dto);
 
     public abstract Iterable<DishTypeDTO> dishTypeDTOList (Iterable<DishType> dishTypeList);
 

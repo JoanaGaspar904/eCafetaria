@@ -3,9 +3,15 @@ package com.example.eCafetaria.dishtype.domain;
 import com.example.eCafetaria.dishtype.domain.exceptions.InvalidLengthForDescription;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Embeddable
 public class Description {
+    @NotNull
+    @NotBlank
+    @Size(min = 1, max = 2048)
     private final String description;
 
 
