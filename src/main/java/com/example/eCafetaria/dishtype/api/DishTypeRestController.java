@@ -2,6 +2,9 @@ package com.example.eCafetaria.dishtype.api;
 
 import com.example.eCafetaria.dishtype.application.*;
 import com.example.eCafetaria.dishtype.domain.Acronym;
+import com.example.eCafetaria.dishtype.domain.exceptions.InvalidLengthForDescription;
+import com.example.eCafetaria.dishtype.domain.exceptions.NoSpecialCharacters;
+import com.example.eCafetaria.dishtype.domain.exceptions.NotASingleWord;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -46,7 +49,7 @@ public class DishTypeRestController {
     @GetMapping("/{acronym}")
     public ResponseEntity<DishTypeDTO> searchByAcronym(@PathVariable("acronym") @Parameter(description = "The acronym of the dish type to find.") Acronym acronym) {
         var dishTypeChecker = findDishTypeController.findByAcronym(acronym).
-                orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "DishType Not Found"));
+                orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Dish Type not Found"));
         return ResponseEntity.ok().eTag(Long.toString(dishTypeChecker.getVersion())).body(dishTypeMapper.toDto(dishTypeChecker));
     }
 
@@ -55,9 +58,13 @@ public class DishTypeRestController {
     public ResponseEntity<DishTypeDTO> CreateOrUpdateDishType(final WebRequest request, @PathVariable("acronym") @Parameter(description = "The acronym of the dishtype to create/replace.") DishTypeAcronymDTO acronym, @Valid @RequestBody DishTypeDescriptionDTO descriptionDto) {
         final String ifMatchValue = request.getHeader("if-Match");
         if (ifMatchValue == null || ifMatchValue.isEmpty()) {
-            final var dishType = createDishTypeController.createDishType(acronym, descriptionDto);
-            final var dishTypeURI = ServletUriComponentsBuilder.fromCurrentRequestUri().pathSegment(dishType.getAcronym().obtainAcronym()).build().toUri();
-            return ResponseEntity.created(dishTypeURI).eTag(Long.toString(dishType.getVersion())).body(dishTypeMapper.toDto(dishType));
+            try {
+                final var dishType = createDishTypeController.createDishType(acronym, descriptionDto);
+                final var dishTypeURI = ServletUriComponentsBuilder.fromCurrentRequestUri().pathSegment(dishType.getAcronym().obtainAcronym()).build().toUri();
+                return ResponseEntity.created(dishTypeURI).eTag(Long.toString(dishType.getVersion())).body(dishTypeMapper.toDto(dishType));
+            } catch (NotASingleWord | NoSpecialCharacters | StringIndexOutOfBoundsException | IllegalArgumentException | InvalidLengthForDescription exception) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Dish Type not Found");
+            }
         }
         final var dishType = updateDishTypeController.updateDishType(getVersionFromIfMatchHeader(ifMatchValue), acronym, descriptionDto);
         return ResponseEntity.ok().eTag(Long.toString(dishType.getVersion())).body(dishTypeMapper.toDto(dishType));
