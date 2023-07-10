@@ -1,0 +1,30 @@
+version: '3'
+  services:
+    ecafetaria:
+      build: ecafetaria
+      ports:
+
+  8080:8080
+networks:
+  default:
+    ipv4_address: 192.168.56.10
+depends_on:
+  db
+
+db:
+  build: db
+  ports:
+
+  8082:8082
+  9092:9092
+networks:
+  default:
+    ipv4_address: 192.168.56.11
+
+
+networks:
+  default:
+    ipam:
+      config:
+
+subnet: 192.168.56.0/24
