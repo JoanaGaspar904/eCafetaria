@@ -1,0 +1,49 @@
+Criar um prato
+
+Dish ->"1" DishType
+Dish ->"1" Name
+Dish ->"1" Price
+Dish ->"1" UUID (Gerado pelo sistema ID)
+
+Price ->"1" Moeda
+Price ->"1" Montante
+
+Post/dish
+
+input:
+{
+	"nome": "Bacalhau à Brás?"
+	"preco":{ 
+		"montante":3,
+		"moeda":"EUR"
+	}
+	"dishType":"peixe"
+}
+createDish(Request/DTO){
+	String nome;
+	PrecoDTO preco;
+	String dishType;
+}
+
+@RequestMapping("/dish")
+@RestController
+class DishRestController
+
+@PostMapping
+Dish(View/DTO) create(@RequestBody) createDish(Request/DTO) dto){
+	Dish d = dishMapper.create(dto);
+	return dishRepo.save(d);
+}
+
+@Mapper
+class abstract DishMapper
+	@Autowired
+	private DishTypeRepository dishTypeRepo;
+
+	abstract Dish create(createDish(Request/DTO))
+	Nome toNome(String){
+	//return Nome.valueOf(n);
+	return new Name(n);
+	}
+	DishType toDishType(String a){
+	return dishTypeRepo.findByAcronym(new Acronym (a)).orElseThrow(new NotFoundException);
