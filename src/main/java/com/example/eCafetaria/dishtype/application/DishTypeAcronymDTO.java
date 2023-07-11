@@ -11,11 +11,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Schema(description = "A dish type acronym")
 public class DishTypeAcronymDTO {
     /**
      * The Acronym.
      */
-    @Schema(description ="Dish type acronym")
     public String acronym;
 }

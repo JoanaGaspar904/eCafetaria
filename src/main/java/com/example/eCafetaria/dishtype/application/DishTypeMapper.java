@@ -11,7 +11,7 @@ import org.mapstruct.MappingTarget;
  * The type Dish type mapper.
  */
 @Mapper(componentModel = "spring")
-public abstract class DishTypeMapper {
+public abstract class  DishTypeMapper {
 
     /**
      * To dto dish type dto.
@@ -90,6 +90,9 @@ public abstract class DishTypeMapper {
     public Description stringToDescription (String a){
         return new Description(a);
     }
+}
+
+
 //package com.example.eCafetaria.application.domain;
 //@Component
 //public class DishTypeMapper {
@@ -116,4 +119,4 @@ public abstract class DishTypeMapper {
 //    public DishTypeDTO toDTO(DishType dishType) {
 //        return new DishTypeDTO(dishType.getAcronym().obtainAcronym(), dishType.getDescription().getDescriptiongetDescription());
 //    }
-}
+

@@ -40,7 +40,8 @@ public class Acronym implements Serializable {
 
     /**
      * Obtain acronym string.
-     *
+     * Existencia é discutivel. O acronimo deve ser o guardião da info.
+     * Falta uma explicação tipo o protected constructor
      * @return the string
      */
     public String obtainAcronym() {

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 
 /**
- * The type Dish type rest controller.
+ * The DishType REST controller.
  */
 @RestController
 @RequestMapping("/api/dishtype")
@@ -51,7 +51,7 @@ public class DishTypeRestController {
     UpdateDishTypeController updateDishTypeController;
 
     /**
-     * Search all dish type iterable.
+     * Search all existing dish types.
      *
      * @return the iterable
      */
@@ -97,11 +97,16 @@ public class DishTypeRestController {
                 final var dishTypeURI = ServletUriComponentsBuilder.fromCurrentRequestUri().pathSegment(dishType.getAcronym().obtainAcronym()).build().toUri();
                 return ResponseEntity.created(dishTypeURI).eTag(Long.toString(dishType.getVersion())).body(dishTypeMapper.toDto(dishType));
             } catch (NotASingleWord | NoSpecialCharacters | StringIndexOutOfBoundsException | IllegalArgumentException | InvalidLengthForDescription exception) {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Dish Type not Found");
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
             }
         }
-        final var dishType = updateDishTypeController.updateDishType(getVersionFromIfMatchHeader(ifMatchValue), acronym, descriptionDto);
-        return ResponseEntity.ok().eTag(Long.toString(dishType.getVersion())).body(dishTypeMapper.toDto(dishType));
+        try{
+            final var dishType = updateDishTypeController.updateDishType(getVersionFromIfMatchHeader(ifMatchValue), acronym, descriptionDto);
+            return ResponseEntity.ok().eTag(Long.toString(dishType.getVersion())).body(dishTypeMapper.toDto(dishType));
+        } catch (IllegalArgumentException exception){
+         throw new ResponseStatusException(HttpStatus.PRECONDITION_FAILED);
+         }
+
     }
 
     private Long getVersionFromIfMatchHeader(final String ifMatchHeader){

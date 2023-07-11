@@ -17,6 +17,7 @@ public class DishType {
     private Acronym acronym;
     @Embedded
     @Column(nullable = false, unique = false, updatable = true)
+    //is not going to work because it's a value object, needs to be put in description
     private Description description;
 
     @Version
@@ -24,8 +25,10 @@ public class DishType {
 
     /**
      * Instantiates a new Dish type.
+     *
      */
     protected DishType() {
+        //for ORM only
     }
 
 
