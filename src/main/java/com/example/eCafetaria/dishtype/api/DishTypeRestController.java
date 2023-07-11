@@ -23,18 +23,38 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 
 
+/**
+ * The type Dish type rest controller.
+ */
 @RestController
 @RequestMapping("/api/dishtype")
 public class DishTypeRestController {
+    /**
+     * The Find dish type controller.
+     */
     @Autowired
     FindDishTypeController findDishTypeController;
+    /**
+     * The Create dish type controller.
+     */
     @Autowired
     CreateDishTypeController createDishTypeController;
+    /**
+     * The Dish type mapper.
+     */
     @Autowired
     DishTypeMapper dishTypeMapper;
+    /**
+     * The Update dish type controller.
+     */
     @Autowired
     UpdateDishTypeController updateDishTypeController;
 
+    /**
+     * Search all dish type iterable.
+     *
+     * @return the iterable
+     */
     @Operation(summary = "Gets all Dish Types.")
     @ApiResponse(description = "Success", responseCode = "200", content = { @Content(mediaType = "application/json",
             array = @ArraySchema(schema = @Schema(implementation = DishTypeDTO.class))) })
@@ -45,6 +65,12 @@ public class DishTypeRestController {
         return dishTypeDTOList;
     }
 
+    /**
+     * Search by acronym response entity.
+     *
+     * @param acronym the acronym
+     * @return the response entity
+     */
     @Operation(summary = "Get a dish type by acronym.")
     @GetMapping("/{acronym}")
     public ResponseEntity<DishTypeDTO> searchByAcronym(@PathVariable("acronym") @Parameter(description = "The acronym of the dish type to find.") Acronym acronym) {
@@ -53,6 +79,14 @@ public class DishTypeRestController {
         return ResponseEntity.ok().eTag(Long.toString(dishTypeChecker.getVersion())).body(dishTypeMapper.toDto(dishTypeChecker));
     }
 
+    /**
+     * Create or update dish type response entity.
+     *
+     * @param request        the request
+     * @param acronym        the acronym
+     * @param descriptionDto the description dto
+     * @return the response entity
+     */
     @Operation(description = "To create or update the dish type by acronym.")
     @PutMapping("/{acronym}")
     public ResponseEntity<DishTypeDTO> CreateOrUpdateDishType(final WebRequest request, @PathVariable("acronym") @Parameter(description = "The acronym of the dishtype to create/replace.") DishTypeAcronymDTO acronym, @Valid @RequestBody DishTypeDescriptionDTO descriptionDto) {

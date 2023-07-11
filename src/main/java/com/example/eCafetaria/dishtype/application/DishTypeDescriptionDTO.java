@@ -6,11 +6,17 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 
+/**
+ * The type Dish type description dto.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Schema(description = "A dish type description")
 public class DishTypeDescriptionDTO {
+    /**
+     * The Description.
+     */
     @Schema(description = "Dish type description")
     String description;
 }

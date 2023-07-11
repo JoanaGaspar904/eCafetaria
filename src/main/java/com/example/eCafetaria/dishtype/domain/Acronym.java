@@ -7,16 +7,27 @@ import javax.persistence.Embeddable;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
+/**
+ * The type Acronym.
+ */
 @Embeddable
 public class Acronym implements Serializable {
     private static final long serialVersionUID = -192856187882749256L;
     @Size(min = 1, max = 10)
     private final String acronym;
 
+    /**
+     * Instantiates a new Acronym.
+     */
     protected Acronym() {
         acronym = null;
     }
 
+    /**
+     * Instantiates a new Acronym.
+     *
+     * @param acronym the acronym
+     */
     public Acronym(String acronym){
         if(acronym.contains(" "))
             throw new NotASingleWord();
@@ -27,6 +38,11 @@ public class Acronym implements Serializable {
         this.acronym = acronym;
     }
 
+    /**
+     * Obtain acronym string.
+     *
+     * @return the string
+     */
     public String obtainAcronym() {
         return acronym;
     }

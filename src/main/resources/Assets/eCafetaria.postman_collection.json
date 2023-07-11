@@ -1,0 +1,309 @@
+{
+	"info": {
+		"_postman_id": "740d8d33-2f6f-4e23-9620-7c9a48b8ffbb",
+		"name": "eCafetaria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27977909"
+	},
+	"item": [
+		{
+			"name": "DishType",
+			"item": [
+				{
+					"name": "api",
+					"item": [
+						{
+							"name": "Find all dish types",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}{{baseUrl}}/dishtype/",
+									"host": [
+										"{{host}}{{baseUrl}}"
+									],
+									"path": [
+										"dishtype",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Find by acronym",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}{{baseUrl}}/dishtype/CRN",
+									"host": [
+										"{{host}}{{baseUrl}}"
+									],
+									"path": [
+										"dishtype",
+										"CRN"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Find by an non-existing acronym",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}{{baseUrl}}/dishtype/TGLTOLTP",
+									"host": [
+										"{{host}}{{baseUrl}}"
+									],
+									"path": [
+										"dishtype",
+										"TGLTOLTP"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create new dish type by acronym",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"description\" : \"peixe\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}{{baseUrl}}/dishtype/PEI",
+									"host": [
+										"{{host}}{{baseUrl}}"
+									],
+									"path": [
+										"dishtype",
+										"PEI"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create new dish type by acronym CRN",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"description\" : \"carne\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}{{baseUrl}}/dishtype/CRN",
+									"host": [
+										"{{host}}{{baseUrl}}"
+									],
+									"path": [
+										"dishtype",
+										"CRN"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update dish type by acronym",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "If-Match",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"description\" : \"Carne\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}{{baseUrl}}/dishtype/CRN",
+									"host": [
+										"{{host}}{{baseUrl}}"
+									],
+									"path": [
+										"dishtype",
+										"CRN"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create dish type without acronym",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{host}}{{baseUrl}}/dishtype/",
+									"host": [
+										"{{host}}{{baseUrl}}"
+									],
+									"path": [
+										"dishtype",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create dish type without description",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{host}}{{baseUrl}}/dishtype/VEG",
+									"host": [
+										"{{host}}{{baseUrl}}"
+									],
+									"path": [
+										"dishtype",
+										"VEG"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update dish type without description",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{host}}{{baseUrl}}/dishtype/CRN",
+									"host": [
+										"{{host}}{{baseUrl}}"
+									],
+									"path": [
+										"dishtype",
+										"CRN"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update dish type without acronym",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{host}}{{baseUrl}}/dishtype/",
+									"host": [
+										"{{host}}{{baseUrl}}"
+									],
+									"path": [
+										"dishtype",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create dish type with 11 chracters long acronym",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"description\" : \"vegetariano\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}{{baseUrl}}/dishtype/qwertyuiopas",
+									"host": [
+										"{{host}}{{baseUrl}}"
+									],
+									"path": [
+										"dishtype",
+										"qwertyuiopas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create dish type with a number in the acronym",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\" : \"carne\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}{{baseUrl}}/dishtype/C7N",
+									"host": [
+										"{{host}}{{baseUrl}}"
+									],
+									"path": [
+										"dishtype",
+										"C7N"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create dish type with an acronym with less than one character",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\" : \"empty dish\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}{{baseUrl}}/dishtype/",
+									"host": [
+										"{{host}}{{baseUrl}}"
+									],
+									"path": [
+										"dishtype",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

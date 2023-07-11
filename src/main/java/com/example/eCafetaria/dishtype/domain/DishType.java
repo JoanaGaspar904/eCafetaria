@@ -7,6 +7,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ * The type Dish type.
+ */
 @Entity
 public class DishType {
 
@@ -19,11 +22,19 @@ public class DishType {
     @Version
     private long version;
 
+    /**
+     * Instantiates a new Dish type.
+     */
     protected DishType() {
     }
 
 
-
+    /**
+     * Instantiates a new Dish type.
+     *
+     * @param acronym     the acronym
+     * @param description the description
+     */
     public DishType(Acronym acronym, Description description){
         setAcronym(acronym);
         setDescription(description);
@@ -37,6 +48,12 @@ public class DishType {
             throw new IllegalArgumentException();
        this.acronym = acronym;
     }
+
+    /**
+     * Sets description.
+     *
+     * @param description the description
+     */
     /* This method is public because the user is allowed to change de description
      * wherever he wants.
      */
@@ -46,13 +63,29 @@ public class DishType {
         this.description = description;
     }
 
+    /**
+     * Gets version.
+     *
+     * @return the version
+     */
     public long getVersion() {
         return version;
     }
+
+    /**
+     * Gets acronym.
+     *
+     * @return the acronym
+     */
     public Acronym getAcronym() {
         return acronym;
     }
 
+    /**
+     * Gets description.
+     *
+     * @return the description
+     */
     public Description getDescription() {
         return description;
     }
