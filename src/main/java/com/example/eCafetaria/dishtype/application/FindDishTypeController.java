@@ -41,9 +41,17 @@ public class FindDishTypeController {
 // novo -- Optional devolve DishType em vez de DishTypeDTO
     // outro -- dishT
     public Optional<DishType> findByAcronym(Acronym acronym) {
-        Optional<DishType> dishTypeChecker= dishTypeRepository.findById(acronym);
-        if (dishTypeChecker.isPresent())
-            return Optional.of(dishTypeChecker.get());
-        return Optional.empty();
+        return dishTypeRepository.findById(acronym);
+
     }
+
+    //Alternative
+    // Usar a funcao de optional chamada orElse() ou orElseThrows();#
+    // outro metodo, é o metodo map.
+//   public Optional<DishType> findByAcronym (Acronym acronym){
+//        var maybeDishType = dishTypeRepository.findById(acronym);
+//        return maybeDishType;
+//    }
+
+
 }

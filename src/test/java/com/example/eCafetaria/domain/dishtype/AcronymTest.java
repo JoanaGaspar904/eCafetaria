@@ -1,24 +1,24 @@
 package com.example.eCafetaria.domain.dishtype;
 
-import com.example.eCafetaria.dishtype.domain.Acronym;
 import com.example.eCafetaria.dishtype.domain.exceptions.NoSpecialCharacters;
 import com.example.eCafetaria.dishtype.domain.exceptions.NotASingleWord;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class DishTypeTest {
+class AcronymTest {
     @Test
     void Test_Acronym_CorrectAcronym_CRN() {
         String acronymToTest = "CRN";
-        Acronym actualAcronym = new Acronym(acronymToTest);
+        com.example.eCafetaria.dishtype.domain.Acronym actualAcronym = new com.example.eCafetaria.dishtype.domain.Acronym(acronymToTest);
         Assertions.assertEquals("CRN", actualAcronym.obtainAcronym());
     }
 
+    
     @Test
     void Test_Acronym_Not_A_Single_Word() {
         String acronymToTest = "C R";
         Assertions.assertThrows(NotASingleWord.class, () -> {
-            new Acronym(acronymToTest);
+            new com.example.eCafetaria.dishtype.domain.Acronym(acronymToTest);
         });
     }
 
@@ -26,7 +26,7 @@ class DishTypeTest {
     void Test_Acronym_No_Special_Characters() {
         String acronymToTest = "C!R";
         Assertions.assertThrows(NoSpecialCharacters.class, () -> {
-            new Acronym(acronymToTest);
+            new com.example.eCafetaria.dishtype.domain.Acronym(acronymToTest);
         });
     }
 
@@ -34,7 +34,7 @@ class DishTypeTest {
     void Test_Acronym_Max_10_Characters() {
         String acronymToTest = "CARCARCARCAR";
         Assertions.assertThrows(StringIndexOutOfBoundsException.class, () -> {
-            new Acronym(acronymToTest);
+            new com.example.eCafetaria.dishtype.domain.Acronym(acronymToTest);
         });
     }
 }
