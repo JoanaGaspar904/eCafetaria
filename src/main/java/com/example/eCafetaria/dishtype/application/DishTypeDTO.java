@@ -19,6 +19,7 @@ public class DishTypeDTO {
     /**
      * The Description.
      */
+    @Schema(description = "Dish type description")
     String description;
 
 }

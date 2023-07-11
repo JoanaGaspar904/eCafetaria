@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 
 /**
- * The type Dish type rest controller.
+ * The DishType REST controller.
  */
 @RestController
 @RequestMapping("/api/dishtype")
@@ -51,7 +51,7 @@ public class DishTypeRestController {
     UpdateDishTypeController updateDishTypeController;
 
     /**
-     * Search all dish type iterable.
+     * Search all existing dish types.
      *
      * @return the iterable
      */

@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Size;
+
 
 /**
  * The type Dish type description dto.
@@ -12,11 +14,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Schema(description = "A dish type description")
 public class DishTypeDescriptionDTO {
     /**
      * The Description.
      */
-    @Schema(description = "Dish type description")
+    @Size(min = 0, max = 2048)
     String description;
 }
